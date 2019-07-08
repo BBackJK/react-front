@@ -1,0 +1,30 @@
+.layout-header {
+  background-color: black;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.layout-logo {
+  color: white;
+  padding: 20px 0 0 30px;
+  font-size: 24px;
+  float: left;
+}
+
+.layout-link {
+  text-decoration: none;
+}
+
+.layout-menu {
+  float: right;
+}
+
+.layout-auth {
+  width: 70px;
+  height: 100%;
+  color: white;
+  padding: 25px 20px 0 0;
+}

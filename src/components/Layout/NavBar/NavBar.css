@@ -1,0 +1,26 @@
+.nav-main {
+  text-align: center;
+  width: 100%;
+  height: 25px;
+  background-color: #e6e6e6;
+  position: fixed;
+  left: 0;
+  top: 80px;
+}
+
+.nav-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-li {
+  float: left;
+  /* width: 20px; */
+  padding: 1px 10px 0 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+}

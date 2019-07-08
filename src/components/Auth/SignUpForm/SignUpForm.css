@@ -1,0 +1,40 @@
+.sign-up-main {
+}
+
+.sign-up-title {
+  text-align: center;
+}
+
+.sign-up-form {
+  text-align: center;
+}
+
+.sign-up-label {
+  width: 43%;
+}
+
+.sign-up-input {
+  margin: 10px 0 10px 0;
+  border: none;
+  border-bottom: 2px solid;
+  width: 60%;
+  height: 30px;
+}
+
+.sign-up-button {
+  float: center;
+  margin-top: 10px;
+
+  border-radius: 10px;
+  font-size: 16px;
+  height: 40px;
+  width: 60px;
+  border: 1px solid salmon;
+  background-color: white;
+  color: black;
+}
+
+.sign-up-error {
+  text-align: center;
+  color: red;
+}
