@@ -2,6 +2,6 @@ import React from 'react';
 
 import { AuthContainer } from '../containers';
 
-const SignIn = () => <AuthContainer />;
+const Auth = () => <AuthContainer />;
 
-export default SignIn;
+export default Auth;

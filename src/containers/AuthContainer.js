@@ -1,16 +1,16 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { SignInForm, SignUpForm, Modals } from '../components';
-import { LOG_IN } from '../reducers/user';
+import { SignInForm, SignUpForm, Modals, Button } from '../components';
+import { LOG_IN, SIGN_UP } from '../reducers/user';
 
 let snsEmail = '';
 
 const AuthContainer = () => {
-  const { loginErrorReason, info } = useSelector(state => state.user);
+  const { loginErrorReason, token, isSignedUp } = useSelector(
+    state => state.user,
+  );
   const dispatch = useDispatch();
-
-  console.log(`loginErrorReason : ${loginErrorReason}, info : ${info}`);
 
   const successGoogle = useCallback((res) => {
     snsEmail = res.w3.U3;
@@ -27,14 +27,25 @@ const AuthContainer = () => {
     alert('구글 로그인 실패! 다시 시도해 주세요.');
   };
 
+  const onSignUp = (signUpData) => {
+    console.log(signUpData);
+    return dispatch({
+      type: SIGN_UP,
+      data: signUpData,
+    });
+  };
+
   return loginErrorReason === 404 ? (
     <div>
-      <SignUpForm sns={snsEmail} />
+      <SignUpForm sns={snsEmail} onFunc={onSignUp}>
+        <Button type="submit" ment="등록" />
+      </SignUpForm>
       <Modals
         link="/"
         title="회원 등록 성공"
-        contents="홈페이지로 이동하세요!"
-        visible={info != null}
+        contents="홈페이지로 이동 하세요!"
+        visible={isSignedUp === true}
+        tag="register"
       />
     </div>
   ) : (
@@ -47,7 +58,7 @@ const AuthContainer = () => {
         link="/"
         title="로그인 성공"
         contents="홈페이지로 이동하세요!"
-        visible={info != null}
+        visible={token != null}
       />
     </div>
   );

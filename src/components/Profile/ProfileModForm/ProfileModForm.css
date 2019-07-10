@@ -1,0 +1,32 @@
+.profile-mod-main {
+  text-align: center;
+}
+
+.profile-mod-title {
+  text-align: center;
+  margin-top: 15%;
+}
+
+.profile-mod-table {
+  border-collapse: collapse;
+  width: 60%;
+  height: 100px;
+  margin: auto;
+}
+
+.profile-mod-th,
+.profile-mod-td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile-mod-input {
+  border-radius: 3px;
+  height: 20px;
+}
+
+.profile-mod-error {
+  color: red;
+  text-align: center;
+}

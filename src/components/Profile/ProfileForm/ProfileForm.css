@@ -1,0 +1,22 @@
+.profile-main {
+  text-align: center;
+}
+
+.profile-title {
+  text-align: center;
+  margin-top: 15%;
+}
+
+.profile-table {
+  border-collapse: collapse;
+  width: 60%;
+  height: 100px;
+  margin: auto;
+}
+
+.profile-th,
+.profile-td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}

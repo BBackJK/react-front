@@ -1,51 +1,43 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { isEmail, isMobilePhone } from 'validator';
+import { useSelector } from 'react-redux';
+import { isEmail, isMobilePhone, isLength } from 'validator';
 
+// import { Button } from '../../Common';
+import { useInput } from '../../../util';
 import './SignUpForm.css';
-import { SIGN_UP } from '../../../reducers/user';
 
-const useInput = (initValue = null) => {
-  const [value, setter] = useState(initValue);
-  const handler = useCallback((e) => {
-    setter(e.target.value);
-  }, []);
-  return [value, handler];
-};
+const SignUpForm = ({ sns, onFunc, children }) => {
+  const [_email, onChangeEmail] = useInput('');
+  const [_name, onChangeName] = useInput('');
+  const [_phone, onChangePhone] = useInput('');
+  const [emailValidError, setEmailValidError] = useState(false);
+  const [phoneValidError, setPhoneValidError] = useState(false);
 
-const SignUpForm = ({ sns }) => {
-  const [email, onChangeEmail] = useInput('');
-  const [name, onChangeName] = useInput('');
-  const [phone, onChangePhone] = useInput('');
-  const [emailValidError, setEmailValidError] = useState(null);
-  const [phoneValidError, setPhoneValidError] = useState(null);
-
-  const dispatch = useDispatch();
+  const { signUpErrorReason } = useSelector(state => state.user);
 
   const onSubmit = useCallback(
     (e) => {
-      console.log('클릭');
       e.preventDefault();
-      !isEmail(email) ? setEmailValidError(true) : setEmailValidError(false);
-      !isMobilePhone(phone)
-        ? setPhoneValidError(true)
-        : setPhoneValidError(false);
 
-      if (emailValidError !== true && phoneValidError !== true) {
-        dispatch({
-          type: SIGN_UP,
-          data: {
-            sns_email: sns,
-            email,
-            name,
-            phone,
-          },
-        });
+      if (!isEmail(_email)) {
+        return setEmailValidError(true);
       }
+      if (!isMobilePhone(_phone) || !isLength(_phone, { min: 11, max: 11 })) {
+        return setPhoneValidError(true);
+      }
+
+      const signUpData = {
+        sns_email: sns,
+        email: _email,
+        name: _name,
+        phone: _phone,
+      };
+
+      return onFunc(signUpData);
     },
-    [email, name, phone],
+    [_email, _name, _phone],
   );
 
   return (
@@ -54,54 +46,63 @@ const SignUpForm = ({ sns }) => {
       <h3 className="sign-up-title">
         간단한 정보를 등록 후 서비스를 이용해 주세요!
       </h3>
+      <hr className="sign-up-hr" />
       <form onSubmit={onSubmit} className="sign-up-form">
         <div>
           <div className="sign-up-label">
-            <label>Email</label>
+            <label>
+              <b>Email</b>
+            </label>
           </div>
           <input
             placeholder="Your Email..."
             className="sign-up-input"
-            value={email}
+            value={_email}
             onChange={onChangeEmail}
             required
           />
           {emailValidError && (
-            <div className="sign-up-error">이메일 형식에 맞춰주세요.</div>
+            <div className="sign-up-error">이메일 형식에 맞춰주세요</div>
           )}
         </div>
         <div>
           <div className="sign-up-label">
-            <label>Name</label>
+            <label>
+              <b>Name</b>
+            </label>
           </div>
           <input
             placeholder="Your Name..."
             className="sign-up-input"
-            value={name}
+            value={_name}
             onChange={onChangeName}
             required
           />
         </div>
         <div>
           <div className="sign-up-label">
-            <label>Phone</label>
+            <label>
+              <b>Phone</b>
+            </label>
           </div>
           <input
             placeholder="Your Phone...   ex) 010XXXXXXXX"
             className="sign-up-input"
-            value={phone}
+            value={_phone}
             onChange={onChangePhone}
             required
           />
           {phoneValidError && (
-            <div className="sign-up-error">핸드폰 형식에 맞춰주세요!</div>
+            <div className="sign-up-error">핸드폰 형식에 맞춰주세요</div>
           )}
         </div>
-        <div>
-          <button type="submit" className="sign-up-button">
-            등록
-          </button>
-        </div>
+        {signUpErrorReason === 409 && (
+          <div className="sign-up-error">
+            이미 등록된 회원입니다
+            <br /> 이메일을 확인해주세요
+          </div>
+        )}
+        {children}
       </form>
     </div>
   );
@@ -109,6 +110,8 @@ const SignUpForm = ({ sns }) => {
 
 SignUpForm.propTypes = {
   sns: PropTypes.string.isRequired,
+  onFunc: PropTypes.func.isRequired,
+  children: PropTypes.node,
 };
 
 export default SignUpForm;

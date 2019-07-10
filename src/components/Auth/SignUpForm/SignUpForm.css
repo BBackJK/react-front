@@ -1,12 +1,16 @@
-.sign-up-main {
-}
-
 .sign-up-title {
   text-align: center;
 }
 
 .sign-up-form {
   text-align: center;
+  /* padding: 16px; */
+}
+
+.sign-up-hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+  width: 60%;
 }
 
 .sign-up-label {
@@ -14,11 +18,21 @@
 }
 
 .sign-up-input {
-  margin: 10px 0 10px 0;
+  /* margin: 10px 0 10px 0;
   border: none;
   border-bottom: 2px solid;
   width: 60%;
-  height: 30px;
+  height: 30px; */
+  width: 60%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+.sign-up-input:focus {
+  background-color: #ddd;
+  outline: none;
 }
 
 .sign-up-button {

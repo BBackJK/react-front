@@ -6,13 +6,13 @@ import { Header, Footer, NavBar, App } from '../components';
 import '../index.css';
 
 const MainContainer = () => {
-  const { info } = useSelector(state => state.user);
+  const { token } = useSelector(state => state.user);
   return (
     <div>
-      {info === null ? (
-        <Header link="signin" menu="sign in" />
+      {token === null ? (
+        <Header link="login" menu="login" />
       ) : (
-        <Header link="mypage" menu="my page" />
+        <Header link="profile" menu="my page" />
       )}
       <div className="app-contents">
         <NavBar />
