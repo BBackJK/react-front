@@ -1,0 +1,18 @@
+.searchForm-main {
+  text-align: center;
+}
+
+.searchForm-input {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
+
+  height: 40px;
+}
+
+.searchForm-error {
+  color: red;
+  text-align: center;
+}

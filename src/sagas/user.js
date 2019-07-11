@@ -27,6 +27,9 @@ import {
   DELETE_USER,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
+  SEARCH_USER,
+  SEARCH_USER_SUCCESS,
+  SEARCH_USER_FAILURE,
 } from '../reducers/user';
 
 // login
@@ -155,7 +158,6 @@ function* watchUpdateInfo() {
 
 // delete user
 function deleteUserAPI(tokenData) {
-  console.log(tokenData);
   return axios.delete('http://localhost:8000/user', {
     headers: { 'x-access-token': tokenData.token },
   });
@@ -180,6 +182,31 @@ function* watchDeleteUser() {
   yield takeEvery(DELETE_USER, deleteUser);
 }
 
+// search user
+function searchUserAPI(searchData) {
+  return axios.get(`http://localhost:8000/user/${searchData}`);
+}
+
+function* searchUser(action) {
+  try {
+    const result = yield call(searchUserAPI, action.data);
+    yield put({
+      type: SEARCH_USER_SUCCESS,
+      data: result.data,
+    });
+  } catch (err) {
+    console.log(err);
+    yield put({
+      type: SEARCH_USER_FAILURE,
+      error: err.response.status,
+    });
+  }
+}
+
+function* watchSearchUser() {
+  yield takeEvery(SEARCH_USER, searchUser);
+}
+
 export default function* userSaga() {
   yield all([
     fork(watchLogin),
@@ -188,5 +215,6 @@ export default function* userSaga() {
     fork(watchGetInfo),
     fork(watchUpdateInfo),
     fork(watchDeleteUser),
+    fork(watchSearchUser),
   ]);
 }

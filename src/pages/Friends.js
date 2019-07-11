@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Friends = () => <div>Hello, Friends page!</div>;
+import { FriendsContainer } from '../containers';
+
+const Friends = () => (
+  <div>
+    <FriendsContainer />
+  </div>
+);
 
 export default Friends;

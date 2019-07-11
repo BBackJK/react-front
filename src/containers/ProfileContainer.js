@@ -1,4 +1,7 @@
 /* eslint-disable no-nested-ternary */
+/* eslint-disable consistent-return */
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';

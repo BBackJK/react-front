@@ -3,3 +3,4 @@ export { default as AuthContainer } from './AuthContainer';
 export { default as MainContainer } from './MainContainer';
 export { default as ProfileContainer } from './ProfileContainer';
 export { default as HomeContainer } from './HomeContainer';
+export { default as FriendsContainer } from './FriendsContainer';

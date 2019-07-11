@@ -24,8 +24,13 @@ const initialState = {
   isDeleted: false, // 회원 탈퇴 성공
   deleteErrorReason: '', // 회원 탈퇴 실패 사유
 
+  isSearching: false, // 회원 검색 중
+  isSearched: false, // 회원 검색 성공
+  searchErrorReason: '', // 회원 검색 실패 사유
+
   token: null, // 내 토큰
   info: null, // 내 정보
+  searchUserData: [], // 유저 검색 정보
 };
 
 export const LOG_IN = 'LOG_IN';
@@ -52,8 +57,13 @@ export const DELETE_USER = 'DELETE_USER';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 export const DELETE_USER_FAILURE = 'DELETE_USER_FAILURE';
 
+export const SEARCH_USER = 'SEARCH_USER';
+export const SEARCH_USER_SUCCESS = 'SEARCH_USER_SUCCESS';
+export const SEARCH_USER_FAILURE = 'SEARCH_USER_FAILURE';
+
 export default (state = initialState, action) => produce(state, (draft) => {
     switch (action.type) {
+      // log in
       case LOG_IN: {
         draft.isLoggingIn = true;
         draft.isLoggedOut = false;
@@ -76,6 +86,7 @@ export default (state = initialState, action) => produce(state, (draft) => {
         break;
       }
 
+      // log out
       case LOG_OUT: {
         draft.isLoggingOut = true;
         draft.isLoggedOut = false;
@@ -96,6 +107,7 @@ export default (state = initialState, action) => produce(state, (draft) => {
         break;
       }
 
+      // sign up
       case SIGN_UP: {
         draft.isSigningUp = true;
         draft.isSignedUp = false;
@@ -117,6 +129,7 @@ export default (state = initialState, action) => produce(state, (draft) => {
         break;
       }
 
+      // get info
       case GET_INFO: {
         draft.infoGetting = true;
         draft.infoGetErrorReason = '';
@@ -138,6 +151,7 @@ export default (state = initialState, action) => produce(state, (draft) => {
         break;
       }
 
+      // update info
       case INFO_UPDATE: {
         draft.isUpdating = true;
         draft.isUpdated = false;
@@ -160,6 +174,7 @@ export default (state = initialState, action) => produce(state, (draft) => {
         break;
       }
 
+      // delete user
       case DELETE_USER: {
         draft.isDeleting = true;
         draft.isDeleted = false;
@@ -180,6 +195,31 @@ export default (state = initialState, action) => produce(state, (draft) => {
         draft.isDeleting = false;
         draft.isDeleted = false;
         draft.deleteErrorReason = action.error;
+        break;
+      }
+
+      // search user
+      case SEARCH_USER: {
+        draft.isSearching = true;
+        draft.isSearched = false;
+        draft.searchErrorReason = '';
+        draft.searchUserData = null;
+        break;
+      }
+
+      case SEARCH_USER_SUCCESS: {
+        draft.isSearching = false;
+        draft.isSearched = true;
+        draft.searchErrorReason = '';
+        draft.searchUserData = action.data;
+        break;
+      }
+
+      case SEARCH_USER_FAILURE: {
+        draft.isSearching = false;
+        draft.isSearched = false;
+        draft.searchErrorReason = action.error;
+        draft.searchUserData = null;
         break;
       }
       default: {

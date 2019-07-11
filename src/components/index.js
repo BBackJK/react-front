@@ -1,7 +1,8 @@
 import { Header, Footer, NavBar } from './Layout';
 import { SignUpForm, SignInForm } from './Auth';
-import { Modals, Button } from './Common';
+import { Modals, Button, SearchForm } from './Common';
 import { ProfileForm, ProfileModForm } from './Profile';
+import { FriendView, FriendsRequest } from './Friends';
 import HomeView from './HomeView/HomeView';
 
 export { default as App } from './App';
@@ -17,4 +18,7 @@ export {
   ProfileForm,
   ProfileModForm,
   HomeView,
+  FriendView,
+  FriendsRequest,
+  SearchForm,
 };
