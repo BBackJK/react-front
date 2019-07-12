@@ -30,7 +30,7 @@ const initialState = {
 
   token: null, // 내 토큰
   info: null, // 내 정보
-  searchUserData: [], // 유저 검색 정보
+  searchUserData: null, // 유저 검색 정보
 };
 
 export const LOG_IN = 'LOG_IN';

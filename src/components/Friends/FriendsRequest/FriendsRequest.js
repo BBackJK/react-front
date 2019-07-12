@@ -5,7 +5,7 @@ import './FriendsRequest.css';
 
 const FriendsRequest = ({ children }) => (
   <div className="friendsRequest-main">
-    요청온 목록 화면 입니다.
+    <h1>요청 리스트</h1>
     <br />
     {children}
   </div>

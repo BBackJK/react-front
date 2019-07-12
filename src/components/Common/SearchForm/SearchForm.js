@@ -22,6 +22,7 @@ const SearchForm = ({ children, onFunc }) => {
       }
 
       const searchData = searchPhone;
+      setPhoneValidError(false);
 
       return onFunc(searchData);
     },
