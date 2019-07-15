@@ -1,4 +1,4 @@
-import FollowView from './FollowView/FollowView';
+import FollowMainView from './FollowMainView/FollowMainView';
 import FollowRequestView from './FollowRequestView/FollowRequestView';
 
-export { FollowView, FollowRequestView };
+export { FollowMainView, FollowRequestView };

@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './FollowView.css';
+import './FollowMainView.css';
 
-const FollowView = ({ children }) => (
+const FollowMainView = ({ children }) => (
   <div className="follow-main">
     <h1>친구 목록</h1>
     {children}
   </div>
 );
 
-FollowView.propTypes = {
+FollowMainView.propTypes = {
   children: PropTypes.node,
 };
 
-export default FollowView;
+export default FollowMainView;

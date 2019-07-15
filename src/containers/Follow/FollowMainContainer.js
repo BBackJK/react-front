@@ -3,29 +3,38 @@ import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FollowView, Button, Lists } from '../../components';
+import { FollowMainView, Button, Lists } from '../../components';
 import {
   GET_FOLLOWER,
+  GET_FOLLOWED,
   DELETE_FOLLOWER,
   DELETE_FOLLOWER_FAILURE,
 } from '../../reducers/follow';
 
 const FollowMainContainer = () => {
   const { token } = useSelector(state => state.user);
-  const { follower, isDeleted } = useSelector(state => state.follow);
+  const { follower, isDeleted, followed } = useSelector(state => state.follow);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: DELETE_FOLLOWER_FAILURE,
-    });
-    dispatch({
-      type: GET_FOLLOWER,
-      data: {
-        token,
-      },
-    });
+    if (token) {
+      dispatch({
+        type: DELETE_FOLLOWER_FAILURE,
+      });
+      dispatch({
+        type: GET_FOLLOWER,
+        data: {
+          token,
+        },
+      });
+      dispatch({
+        type: GET_FOLLOWED,
+        data: {
+          token,
+        },
+      });
+    }
   }, [isDeleted]);
 
   if (isDeleted) {
@@ -34,7 +43,7 @@ const FollowMainContainer = () => {
 
   return (
     <div>
-      <FollowView>
+      <FollowMainView>
         {!token ? (
           <div>
             아직 서비스를 이용할 수 없습니다.
@@ -77,12 +86,18 @@ const FollowMainContainer = () => {
               <Button type="button" ment="친구검색" func={null} />
             </Link>
             {'                                    '}
-            <Link to="/follow/followed">
-              <Button type="button" ment="요청알림" func={null} />
-            </Link>
+            {followed.length > 0 ? (
+              <Link to="/follow/followed">
+                <Button type="alarm" ment="요청알림" func={null} />
+              </Link>
+            ) : (
+              <Link to="/follow/followed">
+                <Button type="button" ment="요청알림" func={null} />
+              </Link>
+            )}
           </div>
         )}
-      </FollowView>
+      </FollowMainView>
       {isDeleted && <Redirect to="/follow" />}
     </div>
   );
