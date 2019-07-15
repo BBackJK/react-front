@@ -12,7 +12,7 @@ const NavBar = () => (
         </Link>
       </li>
       <li className="nav-li">
-        <Link to="/friends" className="nav-link">
+        <Link to="/follow" className="nav-link">
           친구
         </Link>
       </li>

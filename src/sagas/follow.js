@@ -14,8 +14,12 @@ import {
   ACCEPT_FOLLOWED,
   ACCEPT_FOLLOWED_SUCCESS,
   ACCEPT_FOLLOWED_FAILURE,
+  DELETE_FOLLOWER,
+  DELETE_FOLLOWER_SUCCESS,
+  DELETE_FOLLOWER_FAILURE,
 } from '../reducers/follow';
 
+// add follow
 function addFollowAPI(apiData) {
   return axios.post('http://localhost:8000/follow/', apiData.postData, {
     headers: { 'x-access-token': apiData.token },
@@ -41,6 +45,7 @@ function* watchAddFollow() {
   yield takeEvery(ADD_FOLLOW, addFollow);
 }
 
+// get follower
 function getFollowerAPI(tokenData) {
   return axios.get('http://localhost:8000/follow/', {
     headers: { 'x-access-token': tokenData.token },
@@ -67,6 +72,7 @@ function* watchGetFollower() {
   yield takeEvery(GET_FOLLOWER, getFollower);
 }
 
+// get followed
 function getFollowedAPI(tokenData) {
   return axios.get('http://localhost:8000/follow/my/', {
     headers: { 'x-access-token': tokenData.token },
@@ -93,8 +99,8 @@ function* watchGetFollowed() {
   yield takeEvery(GET_FOLLOWED, getFollowed);
 }
 
+// accept followed
 function acceptFollowedAPI(apiData) {
-  console.log(apiData);
   return axios.put('http://localhost:8000/follow/', apiData.putData, {
     headers: { 'x-access-token': apiData.token },
   });
@@ -119,11 +125,38 @@ function* watchAcceptFollowed() {
   yield takeEvery(ACCEPT_FOLLOWED, acceptFollowed);
 }
 
+// delete follower
+function deleteFollowerAPI(apiData) {
+  return axios.delete(`http://localhost:8000/follow/${apiData.deleteData.id}`, {
+    headers: { 'x-access-token': apiData.token },
+  });
+}
+
+function* deleteFollower(action) {
+  try {
+    yield call(deleteFollowerAPI, action.data);
+    yield put({
+      type: DELETE_FOLLOWER_SUCCESS,
+    });
+  } catch (err) {
+    console.log(err);
+    yield put({
+      type: DELETE_FOLLOWER_FAILURE,
+      error: err.response.status,
+    });
+  }
+}
+
+function* watchDeleteFollower() {
+  yield takeEvery(DELETE_FOLLOWER, deleteFollower);
+}
+
 export default function* userSaga() {
   yield all([
     fork(watchAddFollow),
     fork(watchGetFollower),
     fork(watchGetFollowed),
     fork(watchAcceptFollowed),
+    fork(watchDeleteFollower),
   ]);
 }

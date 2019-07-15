@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { isMobilePhone, isLength } from 'validator';
 
 import { useInput } from '../../../util';
-import './ProfileModForm.css';
+import './ProfileUpdateForm.css';
 
-const ProfileModForm = ({ userInfo, onFunc, children }) => {
+const ProfileUpdateForm = ({ userInfo, onFunc, children }) => {
   const [_name, onChangeName] = useInput(userInfo.name);
   const [_phone, onChangePhone] = useInput(userInfo.phone);
 
@@ -29,32 +29,32 @@ const ProfileModForm = ({ userInfo, onFunc, children }) => {
   );
 
   return !userInfo ? (
-    <div className="profile-mod-title">
+    <div className="profile-update-title">
       잠시만 기다려주세요! 정보를 읽어오는 중 입니다..
     </div>
   ) : (
-    <div className="profile-mod-main">
-      <h1 className="profile-title">
+    <div className="profile-update-main">
+      <h1 className="profile-update-title">
         <b>{userInfo.name} 님</b>
       </h1>
       <form onSubmit={onUpdate}>
-        <table className="profile-mod-table">
+        <table className="profile-update-table">
           <thead>
             <tr>
-              <th className="profile-mod-th" />
-              <th className="profile-mod-th">Info</th>
+              <th className="profile-update-th" />
+              <th className="profile-update-th">Info</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th className="profile-mod-th">email</th>
-              <td className="profile-mod-td">{userInfo.email}</td>
+              <th className="profile-update-th">email</th>
+              <td className="profile-update-td">{userInfo.email}</td>
             </tr>
             <tr>
-              <th className="profile-mod-th">name</th>
-              <td className="profile-mod-td">
+              <th className="profile-update-th">name</th>
+              <td className="profile-update-td">
                 <input
-                  className="profile-mod-input"
+                  className="profile-update-input"
                   value={_name}
                   onChange={onChangeName}
                   placeholder={userInfo.name}
@@ -63,10 +63,10 @@ const ProfileModForm = ({ userInfo, onFunc, children }) => {
               </td>
             </tr>
             <tr>
-              <th className="profile-mod-th">phone</th>
-              <td className="profile-mod-td">
+              <th className="profile-update-th">phone</th>
+              <td className="profile-update-td">
                 <input
-                  className="profile-mod-input"
+                  className="profile-update-input"
                   value={_phone}
                   onChange={onChangePhone}
                   placeholder={userInfo.phone}
@@ -75,13 +75,13 @@ const ProfileModForm = ({ userInfo, onFunc, children }) => {
               </td>
             </tr>
             <tr>
-              <th className="profile-mod-th">date</th>
-              <td className="profile-mod-td">{userInfo.created_at}</td>
+              <th className="profile-update-th">date</th>
+              <td className="profile-update-td">{userInfo.created_at}</td>
             </tr>
           </tbody>
         </table>
         {phoneValidError && (
-          <div className="profile-mod-error">핸드폰 형식에 맞춰주세요</div>
+          <div className="profile-update-error">핸드폰 형식에 맞춰주세요</div>
         )}
         {children}
       </form>
@@ -89,10 +89,10 @@ const ProfileModForm = ({ userInfo, onFunc, children }) => {
   );
 };
 
-ProfileModForm.propTypes = {
+ProfileUpdateForm.propTypes = {
   userInfo: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
   onFunc: PropTypes.func,
 };
 
-export default ProfileModForm;
+export default ProfileUpdateForm;

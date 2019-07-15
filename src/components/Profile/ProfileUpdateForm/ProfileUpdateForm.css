@@ -1,32 +1,32 @@
-.profile-mod-main {
+.profile-update-main {
   text-align: center;
 }
 
-.profile-mod-title {
+.profile-update-title {
   text-align: center;
   margin-top: 15%;
 }
 
-.profile-mod-table {
+.profile-update-table {
   border-collapse: collapse;
   width: 60%;
   height: 100px;
   margin: auto;
 }
 
-.profile-mod-th,
-.profile-mod-td {
+.profile-update-th,
+.profile-update-td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-.profile-mod-input {
+.profile-update-input {
   border-radius: 3px;
   height: 20px;
 }
 
-.profile-mod-error {
+.profile-update-error {
   color: red;
   text-align: center;
 }

@@ -19,6 +19,10 @@ const initialState = {
   isAccepted: false, // 친구 요청 수락 성공
   acceptErrorReason: '', // 친구 요청 수락 실패 사유
 
+  isDeleting: false, // 친구 삭제 시도중
+  isDeleted: false, // 친구 삭제 성공
+  deleteErrorReason: '', // 친구 삭제 실패 사유
+
   follower: [], // 친구 목록
   followed: [], // 친구 요청 목록
 };
@@ -38,6 +42,10 @@ export const GET_FOLLOWER_FAILURE = 'GET_FOLLOWER_FAILURE';
 export const GET_FOLLOWED = 'GET_FOLLOWED';
 export const GET_FOLLOWED_SUCCESS = 'GET_FOLLOWED_SUCCESS';
 export const GET_FOLLOWED_FAILURE = 'GET_FOLLOWED_FAILURE';
+
+export const DELETE_FOLLOWER = 'DELETE_FOLLOWER';
+export const DELETE_FOLLOWER_SUCCESS = 'DELETE_FOLLOWER_SUCCESS';
+export const DELETE_FOLLOWER_FAILURE = 'DELETE_FOLLOWER_FAILURE';
 
 export default (state = initialState, action) => produce(state, (draft) => {
     switch (action.type) {
@@ -132,6 +140,28 @@ export default (state = initialState, action) => produce(state, (draft) => {
         draft.isAccepting = false;
         draft.isAccepted = false;
         draft.acceptErrorReason = action.error;
+        break;
+      }
+
+      // delete follower
+      case DELETE_FOLLOWER: {
+        draft.isDeleting = true;
+        draft.isDeleted = false;
+        draft.deleteErrorReason = '';
+        break;
+      }
+
+      case DELETE_FOLLOWER_SUCCESS: {
+        draft.isDeleting = false;
+        draft.isDeleted = true;
+        draft.deleteErrorReason = '';
+        break;
+      }
+
+      case DELETE_FOLLOWER_FAILURE: {
+        draft.isDeleting = false;
+        draft.isDeleted = false;
+        draft.deleteErrorReason = action.error;
         break;
       }
 

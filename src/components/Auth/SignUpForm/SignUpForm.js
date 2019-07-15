@@ -1,21 +1,17 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import { isEmail, isMobilePhone, isLength } from 'validator';
 
-// import { Button } from '../../Common';
 import { useInput } from '../../../util';
 import './SignUpForm.css';
 
-const SignUpForm = ({ sns, onFunc, children }) => {
+const SignUpForm = ({ onFunc, children }) => {
   const [_email, onChangeEmail] = useInput('');
   const [_name, onChangeName] = useInput('');
   const [_phone, onChangePhone] = useInput('');
   const [emailValidError, setEmailValidError] = useState(false);
   const [phoneValidError, setPhoneValidError] = useState(false);
-
-  const { signUpErrorReason } = useSelector(state => state.user);
 
   const onSubmit = useCallback(
     (e) => {
@@ -29,7 +25,6 @@ const SignUpForm = ({ sns, onFunc, children }) => {
       }
 
       const signUpData = {
-        sns_email: sns,
         email: _email,
         name: _name,
         phone: _phone,
@@ -96,12 +91,6 @@ const SignUpForm = ({ sns, onFunc, children }) => {
             <div className="sign-up-error">핸드폰 형식에 맞춰주세요</div>
           )}
         </div>
-        {signUpErrorReason === 409 && (
-          <div className="sign-up-error">
-            이미 등록된 회원입니다
-            <br /> 이메일을 확인해주세요
-          </div>
-        )}
         {children}
       </form>
     </div>
@@ -109,7 +98,6 @@ const SignUpForm = ({ sns, onFunc, children }) => {
 };
 
 SignUpForm.propTypes = {
-  sns: PropTypes.string.isRequired,
   onFunc: PropTypes.func.isRequired,
   children: PropTypes.node,
 };

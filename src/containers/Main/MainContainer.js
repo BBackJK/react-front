@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { Header, Footer, NavBar, App } from '../components';
+import { Header, Footer, NavBar, App } from '../../components';
 
-import '../index.css';
+import '../../index.css';
 
 const MainContainer = () => {
   const { token } = useSelector(state => state.user);

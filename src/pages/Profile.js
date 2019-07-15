@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { ProfileContainer } from '../containers';
+import { ProfileMainContainer } from '../containers';
 
-const Profile = () => <ProfileContainer />;
+const Profile = () => <ProfileMainContainer />;
 
 export default Profile;

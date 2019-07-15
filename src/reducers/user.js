@@ -7,6 +7,7 @@ const initialState = {
   isLoggedOut: false, // 로그아웃 성공
 
   isLoggingIn: false, // 로그인 시도중
+  loggingInEmail: null, // 로그인 시도 이메일
   loginErrorReason: '', // 로그인 실패 이유
 
   isSignedUp: false, // 회원가입 성공
@@ -69,6 +70,7 @@ export default (state = initialState, action) => produce(state, (draft) => {
         draft.isLoggedOut = false;
         draft.isLoggingOut = false;
         draft.loginErrorReason = '';
+        draft.loggingInEmail = null;
         break;
       }
 
@@ -76,6 +78,7 @@ export default (state = initialState, action) => produce(state, (draft) => {
         draft.isLoggingIn = false;
         draft.loginErrorReason = '';
         draft.token = action.data;
+        draft.loggingInEmail = null;
         break;
       }
 
@@ -83,6 +86,7 @@ export default (state = initialState, action) => produce(state, (draft) => {
         draft.isLoggingIn = false;
         draft.loginErrorReason = action.error;
         draft.token = null;
+        draft.loggingInEmail = action.data;
         break;
       }
 

@@ -48,6 +48,7 @@ function* login(action) {
     yield put({
       type: LOG_IN_FAILURE,
       error: err.response.status,
+      data: action.data.sns_email,
     });
   }
 }
@@ -131,7 +132,7 @@ function* watchGetInfo() {
 
 // info update
 function infoUpdateAPI(apiData) {
-  return axios.put('http://localhost:8000/user', apiData.updateData, {
+  return axios.put('http://localhost:8000/user', apiData.putData, {
     headers: { 'x-access-token': apiData.token },
   });
 }

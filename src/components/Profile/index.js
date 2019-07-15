@@ -1,4 +1,4 @@
 import ProfileForm from './ProfileForm/ProfileForm';
-import ProfileModForm from './ProfileModForm/ProfileModForm';
+import ProfileUpdateForm from './ProfileUpdateForm/ProfileUpdateForm';
 
-export { ProfileForm, ProfileModForm };
+export { ProfileForm, ProfileUpdateForm };

@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+/* eslint-disable */
+import React from "react";
+import PropTypes from "prop-types";
 
-import './ProfileForm.css';
+import "./ProfileForm.css";
 
-const ProfileForm = ({ userInfo, children }) => {
-  useEffect(() => {
-    if (userInfo && !userInfo.auth_email) {
-      alert('인증되지 않은 이메일입니다. [변경]탭에 들어가 인증해주세요!');
-    }
-  });
-
-  return !userInfo ? (
+const ProfileForm = ({ userInfo, children }) =>
+  !userInfo ? (
     <div className="profile-title">
       잠시만 기다려주세요! 정보를 읽어오는 중 입니다..
     </div>
@@ -48,11 +43,10 @@ const ProfileForm = ({ userInfo, children }) => {
       {children}
     </div>
   );
-};
 
 ProfileForm.propTypes = {
   userInfo: PropTypes.object,
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default ProfileForm;

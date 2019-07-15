@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { HomeView } from '../components';
-import { GET_WEATHER } from '../reducers/weather';
+import { HomeView } from '../../components';
+import { GET_WEATHER } from '../../reducers/weather';
 
 const HomeContainer = () => {
   const { weatherInfo } = useSelector(state => state.weather);
