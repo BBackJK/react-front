@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Messages = () => <div>Hello, Messages page!</div>;
+import { MessageMainContainer } from '../containers';
+
+const Messages = () => (
+  <div>
+    <MessageMainContainer />
+  </div>
+);
 
 export default Messages;

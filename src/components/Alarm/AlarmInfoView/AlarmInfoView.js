@@ -6,7 +6,7 @@ import './AlarmInfoView.css';
 
 const AlarmInfoView = ({ alarmInfo, children, onFunc }) => {
   const [title, onChangeTitle] = useInput('');
-  const onTest = useCallback(
+  const onUpdate = useCallback(
     (e) => {
       e.preventDefault();
 
@@ -24,7 +24,7 @@ const AlarmInfoView = ({ alarmInfo, children, onFunc }) => {
       <h1 className="alarm-info-title">
         <b>알람 정보</b>
       </h1>
-      <form onSubmit={onTest}>
+      <form onSubmit={onUpdate}>
         <table className="alarm-info-table">
           <thead>
             <tr>

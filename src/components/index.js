@@ -4,6 +4,7 @@ import { Modals, Button, SearchForm, Lists } from './Common';
 import { ProfileForm, ProfileUpdateForm } from './Profile';
 import { FollowMainView, FollowRequestView, FollowSearchView } from './Follow';
 import { AlarmMainView, AlarmInfoView } from './Alarm';
+import { MessageMainView, MessageWriteForm, MessageInfoView } from './Message';
 import HomeView from './Home/HomeView';
 
 export { default as App } from './App';
@@ -26,4 +27,7 @@ export {
   Lists,
   AlarmMainView,
   AlarmInfoView,
+  MessageMainView,
+  MessageWriteForm,
+  MessageInfoView,
 };

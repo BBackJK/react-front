@@ -7,6 +7,8 @@ import {
   Alarms,
   AlarmInfo,
   Messages,
+  MessageWrite,
+  MessageInfo,
   Follow,
   FollowTheme,
   NotPage,
@@ -23,9 +25,11 @@ const App = () => (
       <Route path="/alarms/info/:id" component={AlarmInfo} />
       <Route exact path="/follow" component={Follow} />
       <Route path="/follow/:theme" component={FollowTheme} />
+      <Route exact path="/profile" component={Profile} />
       <Route path="/profile/update" component={ProfileUpdate} />
-      <Route path="/profile" component={Profile} />
-      <Route path="/messages" component={Messages} />
+      <Route exact path="/messages" component={Messages} />
+      <Route path="/messages/write" component={MessageWrite} />
+      <Route path="/messages/info/:id" component={MessageInfo} />
       <Route component={NotPage} />
     </Switch>
   </React.Fragment>

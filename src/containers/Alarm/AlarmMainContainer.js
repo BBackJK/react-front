@@ -57,14 +57,14 @@ const AlarmMainContainer = () => {
       <AlarmMainView onFunc={onAddAlarm}>
         {alarmLists.length > 0 ? (
           alarmLists.map(i => (
-            <Lists key={i.id} lists={i}>
+            <Lists key={i.id} lists={i} theme="alarm">
               <Link to={`/alarms/info/${i.id}`}>
                 <Button type="info" ment="i" func={null} />
               </Link>
             </Lists>
           ))
         ) : (
-          <div>데이터가 없습니다.</div>
+          <div>알람 데이터가 없습니다.</div>
         )}
         <Button type="submit" ment="추가" />
       </AlarmMainView>

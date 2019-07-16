@@ -1,0 +1,31 @@
+.message-info-main {
+  text-align: center;
+}
+
+.message-info-title {
+}
+
+.message-info-table {
+  border-collapse: collapse;
+  margin: auto;
+}
+
+.message-info-th,
+.message-info-td {
+  padding: 8px;
+  text-align: left;
+}
+
+.message-info-input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.message-info-textarea {
+  resize: none;
+  border-radius: 5px;
+  border-color: rgb(227, 229, 231);
+}

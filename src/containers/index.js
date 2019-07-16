@@ -8,6 +8,11 @@ import {
 import { SignInContainer, SignUpContainer } from './Auth';
 import { ProfileMainContainer, ProfileUpdateContainer } from './Profile';
 import { AlarmMainContainer, AlarmInfoContainer } from './Alarm';
+import {
+  MessageMainContainer,
+  MessageWriteContainer,
+  MessageInfoContainer,
+} from './Message';
 
 export {
   MainContainer,
@@ -21,4 +26,7 @@ export {
   ProfileUpdateContainer,
   AlarmMainContainer,
   AlarmInfoContainer,
+  MessageMainContainer,
+  MessageWriteContainer,
+  MessageInfoContainer,
 };

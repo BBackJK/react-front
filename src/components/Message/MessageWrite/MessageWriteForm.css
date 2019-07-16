@@ -1,0 +1,28 @@
+.message-write-main {
+  text-align: center;
+}
+
+.message-write-table {
+  border-collapse: collapse;
+  margin: auto;
+}
+
+.message-write-th,
+.message-write-td {
+  padding: 8px;
+  text-align: left;
+}
+
+.message-write-input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.message-write-textarea {
+  resize: none;
+  border-radius: 5px;
+  border-color: rgb(227, 229, 231);
+}
