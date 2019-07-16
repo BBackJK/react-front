@@ -11,7 +11,7 @@ import {
 
 const FollowRequestContainer = () => {
   const { token } = useSelector(state => state.user);
-  const { followed, isAccepted } = useSelector(state => state.follow);
+  const { followed, isAcceptedFollow } = useSelector(state => state.follow);
 
   const dispatch = useDispatch();
 
@@ -25,9 +25,9 @@ const FollowRequestContainer = () => {
     dispatch({
       type: ACCEPT_FOLLOWED_FAILURE,
     });
-  }, [isAccepted]);
+  }, [isAcceptedFollow]);
 
-  if (isAccepted) {
+  if (isAcceptedFollow) {
     alert('요청 수락 성공');
   }
 
@@ -41,7 +41,7 @@ const FollowRequestContainer = () => {
           </div>
         ) : (
           followed.map(i => (
-            <Lists key={i.id} lists={i}>
+            <Lists key={i.id} lists={i} theme="user">
               <Button
                 type="button"
                 ment="요청수락"
@@ -73,7 +73,7 @@ const FollowRequestContainer = () => {
         contents="홈페이지로 이동합니다"
         visible={!token}
       />
-      {isAccepted && <Redirect to="/follow" />}
+      {isAcceptedFollow && <Redirect to="/follow" />}
     </div>
   );
 };

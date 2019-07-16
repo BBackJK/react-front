@@ -35,6 +35,6 @@ function* watchGetWeather() {
   yield takeEvery(GET_WEATHER, getWeather);
 }
 
-export default function* userSaga() {
+export default function* weatherSaga() {
   yield all([fork(watchGetWeather)]);
 }

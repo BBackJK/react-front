@@ -7,6 +7,7 @@ import {
 } from './Follow';
 import { SignInContainer, SignUpContainer } from './Auth';
 import { ProfileMainContainer, ProfileUpdateContainer } from './Profile';
+import { AlarmMainContainer, AlarmInfoContainer } from './Alarm';
 
 export {
   MainContainer,
@@ -18,4 +19,6 @@ export {
   SignUpContainer,
   ProfileMainContainer,
   ProfileUpdateContainer,
+  AlarmMainContainer,
+  AlarmInfoContainer,
 };

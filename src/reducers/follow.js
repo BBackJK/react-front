@@ -11,17 +11,17 @@ const initialState = {
   isFolloweded: false, // 친구 요청 목록 가져오기 성공
   followedErrorReason: '', // 친구 요청 목록 가져오기 실패 사유
 
-  isAdding: false, // 친구 추가 시도중
-  isAdded: false, // 친구 추가 성공
-  addErrorReason: '', // 친구 추가 실패 사유
+  isAddingFollow: false, // 친구 추가 시도중
+  isAddedFollow: false, // 친구 추가 성공
+  addFollowErrorReason: '', // 친구 추가 실패 사유
 
-  isAccepting: false, // 친구 요청 수락 시도중
-  isAccepted: false, // 친구 요청 수락 성공
-  acceptErrorReason: '', // 친구 요청 수락 실패 사유
+  isAcceptingFollow: false, // 친구 요청 수락 시도중
+  isAcceptedFollow: false, // 친구 요청 수락 성공
+  acceptFollowErrorReason: '', // 친구 요청 수락 실패 사유
 
-  isDeleting: false, // 친구 삭제 시도중
-  isDeleted: false, // 친구 삭제 성공
-  deleteErrorReason: '', // 친구 삭제 실패 사유
+  isDeletingFollow: false, // 친구 삭제 시도중
+  isDeletedFollow: false, // 친구 삭제 성공
+  deleteFollowErrorReason: '', // 친구 삭제 실패 사유
 
   follower: [], // 친구 목록
   followed: [], // 친구 요청 목록
@@ -51,23 +51,23 @@ export default (state = initialState, action) => produce(state, (draft) => {
     switch (action.type) {
       // add user
       case ADD_FOLLOW: {
-        draft.isAdding = true;
-        draft.isAdded = false;
-        draft.addErrorReason = '';
+        draft.isAddingFollow = true;
+        draft.isAddedFollow = false;
+        draft.addFollowErrorReason = '';
         break;
       }
 
       case ADD_FOLLOW_SUCCESS: {
-        draft.isAdding = false;
-        draft.isAdded = true;
-        draft.addErrorReason = '';
+        draft.isAddingFollow = false;
+        draft.isAddedFollow = true;
+        draft.addFollowErrorReason = '';
         break;
       }
 
       case ADD_FOLLOW_FAILURE: {
-        draft.isAdding = false;
-        draft.isAdded = false;
-        draft.addErrorReason = action.error;
+        draft.isAddingFollow = false;
+        draft.isAddedFollow = false;
+        draft.addFollowErrorReason = action.error;
         break;
       }
 
@@ -123,45 +123,45 @@ export default (state = initialState, action) => produce(state, (draft) => {
 
       // accept followed
       case ACCEPT_FOLLOWED: {
-        draft.isAccepting = true;
-        draft.isAccepted = false;
-        draft.acceptErrorReason = '';
+        draft.isAcceptingFollow = true;
+        draft.isAcceptedFollow = false;
+        draft.acceptFollowErrorReason = '';
         break;
       }
 
       case ACCEPT_FOLLOWED_SUCCESS: {
-        draft.isAccepting = false;
-        draft.isAccepted = true;
-        draft.acceptErrorReason = '';
+        draft.isAcceptingFollow = false;
+        draft.isAcceptedFollow = true;
+        draft.acceptFollowErrorReason = '';
         break;
       }
 
       case ACCEPT_FOLLOWED_FAILURE: {
-        draft.isAccepting = false;
-        draft.isAccepted = false;
-        draft.acceptErrorReason = action.error;
+        draft.isAcceptingFollow = false;
+        draft.isAcceptedFollow = false;
+        draft.acceptFollowErrorReason = action.error;
         break;
       }
 
       // delete follower
       case DELETE_FOLLOWER: {
-        draft.isDeleting = true;
-        draft.isDeleted = false;
-        draft.deleteErrorReason = '';
+        draft.isDeletingFollow = true;
+        draft.isDeletedFollow = false;
+        draft.deleteFollowErrorReason = '';
         break;
       }
 
       case DELETE_FOLLOWER_SUCCESS: {
-        draft.isDeleting = false;
-        draft.isDeleted = true;
-        draft.deleteErrorReason = '';
+        draft.isDeletingFollow = false;
+        draft.isDeletedFollow = true;
+        draft.deleteFollowErrorReason = '';
         break;
       }
 
       case DELETE_FOLLOWER_FAILURE: {
-        draft.isDeleting = false;
-        draft.isDeleted = false;
-        draft.deleteErrorReason = action.error;
+        draft.isDeletingFollow = false;
+        draft.isDeletedFollow = false;
+        draft.deleteFollowErrorReason = action.error;
         break;
       }
 

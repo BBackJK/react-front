@@ -13,9 +13,13 @@ const Button = ({ type, func, ment }) =>
     <button type="button" className="button-normal" onClick={func}>
       {ment}
     </button>
-  ) : (
+  ) : type === "alarm" ? (
     <button type="alarm" className="button-alarm" onClick={func}>
       <div className="button-blink">{ment}</div>
+    </button>
+  ) : (
+    <button type="info" className="button-info" onClick={func}>
+      {ment}
     </button>
   );
 

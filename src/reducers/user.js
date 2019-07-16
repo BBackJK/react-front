@@ -14,16 +14,16 @@ const initialState = {
   isSigningUp: false, // 회원가입 시도중
   signUpErrorReason: '', // 회원가입 실패 이유
 
-  isUpdating: false, // 정보 변경 시도중
-  isUpdated: false, // 정보 변경 성공
-  updateErrorReason: '', // 정보 변경 실패 사유
+  isUpdatingUser: false, // 정보 변경 시도중
+  isUpdatedUser: false, // 정보 변경 성공
+  updateUserErrorReason: '', // 정보 변경 실패 사유
 
   infoGetting: false, // 정보 얻어오는 중
   infoGetErrorReason: '', // 정보 얻기 실패 사유
 
-  isDeleting: false, // 회원 탈퇴 중
-  isDeleted: false, // 회원 탈퇴 성공
-  deleteErrorReason: '', // 회원 탈퇴 실패 사유
+  isDeletingUser: false, // 회원 탈퇴 중
+  isDeletedUser: false, // 회원 탈퇴 성공
+  deleteUserErrorReason: '', // 회원 탈퇴 실패 사유
 
   isSearching: false, // 회원 검색 중
   isSearched: false, // 회원 검색 성공
@@ -157,48 +157,48 @@ export default (state = initialState, action) => produce(state, (draft) => {
 
       // update info
       case INFO_UPDATE: {
-        draft.isUpdating = true;
-        draft.isUpdated = false;
-        draft.updateErrorReason = '';
+        draft.isUpdatingUser = true;
+        draft.isUpdatedUser = false;
+        draft.updateUserErrorReason = '';
         break;
       }
 
       case INFO_UPDATE_SUCCESS: {
-        draft.isUpdating = false;
-        draft.isUpdated = true;
-        draft.updateErrorReason = '';
+        draft.isUpdatingUser = false;
+        draft.isUpdatedUser = true;
+        draft.updateUserErrorReason = '';
         draft.info = action.data;
         break;
       }
 
       case INFO_UPDATE_FAILURE: {
-        draft.isUpdating = false;
-        draft.isUpdated = false;
-        draft.updateErrorReason = action.error;
+        draft.isUpdatingUser = false;
+        draft.isUpdatedUser = false;
+        draft.updateUserErrorReason = action.error;
         break;
       }
 
       // delete user
       case DELETE_USER: {
-        draft.isDeleting = true;
-        draft.isDeleted = false;
-        draft.deleteErrorReason = '';
+        draft.isDeletingUser = true;
+        draft.isDeletedUser = false;
+        draft.deleteUserErrorReason = '';
         break;
       }
 
       case DELETE_USER_SUCCESS: {
-        draft.isDeleting = false;
-        draft.isDeleted = true;
-        draft.deleteErrorReason = '';
+        draft.isDeletingUser = false;
+        draft.isDeletedUser = true;
+        draft.deleteUserErrorReason = '';
         draft.info = null;
         draft.token = null;
         break;
       }
 
       case DELETE_USER_FAILURE: {
-        draft.isDeleting = false;
-        draft.isDeleted = false;
-        draft.deleteErrorReason = action.error;
+        draft.isDeletingUser = false;
+        draft.isDeletedUser = false;
+        draft.deleteUserErrorReason = action.error;
         break;
       }
 

@@ -5,6 +5,7 @@ import {
   Home,
   Auth,
   Alarms,
+  AlarmInfo,
   Messages,
   Follow,
   FollowTheme,
@@ -18,9 +19,10 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/login" component={Auth} />
-      <Route path="/alarms" component={Alarms} />
+      <Route exact path="/alarms" component={Alarms} />
+      <Route path="/alarms/info/:id" component={AlarmInfo} />
+      <Route exact path="/follow" component={Follow} />
       <Route path="/follow/:theme" component={FollowTheme} />
-      <Route path="/follow" component={Follow} />
       <Route path="/profile/update" component={ProfileUpdate} />
       <Route path="/profile" component={Profile} />
       <Route path="/messages" component={Messages} />

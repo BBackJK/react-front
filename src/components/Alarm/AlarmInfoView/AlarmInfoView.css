@@ -1,0 +1,27 @@
+.alarm-info-main {
+  text-align: center;
+}
+
+.alarm-info-title {
+  text-align: center;
+  margin-top: 15%;
+}
+
+.alarm-info-table {
+  border-collapse: collapse;
+  width: 60%;
+  height: 100px;
+  margin: auto;
+}
+
+.alarm-info-th,
+.alarm-info-td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.alarm-info-textarea {
+  resize: none;
+  border: none;
+}

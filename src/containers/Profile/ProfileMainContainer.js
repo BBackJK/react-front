@@ -9,7 +9,7 @@ import { ProfileForm, Modals, Button } from '../../components';
 import { GET_INFO, LOG_OUT, DELETE_USER } from '../../reducers/user';
 
 const ProfileMainContainer = () => {
-  const { token, info, isLoggedOut, isDeleted } = useSelector(
+  const { token, info, isLoggedOut, isDeletedUser } = useSelector(
     state => state.user,
   );
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const ProfileMainContainer = () => {
         contents="홈페이지로 이동합니다"
         visible={isLoggedOut}
       />
-      {isDeleted && <Redirect to="/" />}
+      {isDeletedUser && <Redirect to="/" />}
     </div>
   );
 };

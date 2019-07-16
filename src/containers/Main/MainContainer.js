@@ -10,9 +10,9 @@ const MainContainer = () => {
   return (
     <div>
       {token === null ? (
-        <Header link="login" menu="login" />
+        <Header link="/login" menu="login" />
       ) : (
-        <Header link="profile" menu="my page" />
+        <Header link="/profile" menu="my page" />
       )}
       <div className="app-contents">
         <NavBar />

@@ -13,7 +13,9 @@ import {
 
 const FollowMainContainer = () => {
   const { token } = useSelector(state => state.user);
-  const { follower, isDeleted, followed } = useSelector(state => state.follow);
+  const { follower, isDeletedFollow, followed } = useSelector(
+    state => state.follow,
+  );
 
   const dispatch = useDispatch();
 
@@ -35,9 +37,9 @@ const FollowMainContainer = () => {
         },
       });
     }
-  }, [isDeleted]);
+  }, [isDeletedFollow]);
 
-  if (isDeleted) {
+  if (isDeletedFollow) {
     alert('삭제 성공');
   }
 
@@ -56,7 +58,7 @@ const FollowMainContainer = () => {
           </div>
         ) : (
           follower.map(i => (
-            <Lists key={i.id} lists={i}>
+            <Lists key={i.id} lists={i} theme="user">
               <Button
                 type="button"
                 ment="삭제"
@@ -98,7 +100,7 @@ const FollowMainContainer = () => {
           </div>
         )}
       </FollowMainView>
-      {isDeleted && <Redirect to="/follow" />}
+      {isDeletedFollow && <Redirect to="/follow" />}
     </div>
   );
 };

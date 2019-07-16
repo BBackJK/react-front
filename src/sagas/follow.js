@@ -151,7 +151,7 @@ function* watchDeleteFollower() {
   yield takeEvery(DELETE_FOLLOWER, deleteFollower);
 }
 
-export default function* userSaga() {
+export default function* followSaga() {
   yield all([
     fork(watchAddFollow),
     fork(watchGetFollower),

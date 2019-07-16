@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Alarms = () => <div>Hello, Alarms page!</div>;
+import { AlarmMainContainer } from '../containers';
+
+const Alarms = () => (
+  <div>
+    <AlarmMainContainer />
+  </div>
+);
 
 export default Alarms;
