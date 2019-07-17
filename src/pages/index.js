@@ -4,6 +4,7 @@ export { default as Auth } from './Auth';
 export { default as Messages } from './Messages';
 export { default as MessageWrite } from './MessageWrite';
 export { default as MessageInfo } from './MessageInfo';
+export { default as MessageSend } from './MessageSend';
 export { default as Follow } from './Follow';
 export { default as FollowTheme } from './FollowTheme';
 export { default as Alarms } from './Alarms';

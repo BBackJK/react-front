@@ -2,11 +2,10 @@ import React from 'react';
 import Clock from 'react-live-clock';
 import PropTypes from 'prop-types';
 
-import './HomeView.css';
+import './MainView.css';
 
-const HomeView = ({ weather }) => (
-  <div className="home-main">
-    <br />
+const MainView = ({ weather, children }) => (
+  <div className="main-main">
     <h3>안녕하세요 좋은 하루 입니다!</h3>
     <br />
     <Clock
@@ -35,11 +34,13 @@ const HomeView = ({ weather }) => (
         <h3>날씨 : {weather.weather[0].main} </h3>
       </div>
     )}
+    {children}
   </div>
 );
 
-HomeView.propTypes = {
+MainView.propTypes = {
   weather: PropTypes.object,
+  children: PropTypes.node,
 };
 
-export default HomeView;
+export default MainView;

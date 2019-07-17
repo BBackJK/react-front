@@ -4,8 +4,12 @@ import PropTypes from "prop-types";
 
 import "./Button.css";
 
-const Button = ({ type, func, ment }) =>
-  type === "submit" ? (
+const Button = ({ type, func, ment }) => {
+  return ment.length > 4 ? (
+    <button type="button" className="button-normal-extension" onClick={func}>
+      {ment}
+    </button>
+  ) : type === "submit" ? (
     <button type="submit" className="button-submit">
       {ment}
     </button>
@@ -22,6 +26,7 @@ const Button = ({ type, func, ment }) =>
       {ment}
     </button>
   );
+};
 
 Button.propTypes = {
   type: PropTypes.string.isRequired,

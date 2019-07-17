@@ -1,0 +1,32 @@
+.message-send-main {
+  text-align: center;
+}
+.message-send-title {
+}
+
+.message-send-table {
+  border-collapse: collapse;
+  margin: auto;
+}
+
+.message-send-th,
+.message-send-td {
+  padding: 8px;
+  text-align: left;
+}
+
+.message-send-select {
+  border: none;
+  border-radius: 5px;
+}
+
+.message-send-textarea {
+  border: none;
+  resize: none;
+  border-radius: 5px;
+}
+
+.message-send-error {
+  color: red;
+  text-align: center;
+}

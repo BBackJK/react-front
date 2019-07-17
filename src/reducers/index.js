@@ -5,6 +5,7 @@ import weather from './weather';
 import follow from './follow';
 import alarm from './alarm';
 import message from './message';
+import send from './send';
 
 const rootReducer = combineReducers({
   user,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   follow,
   alarm,
   message,
+  send,
 });
 
 export default rootReducer;

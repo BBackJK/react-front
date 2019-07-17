@@ -9,6 +9,7 @@ import {
   Messages,
   MessageWrite,
   MessageInfo,
+  MessageSend,
   Follow,
   FollowTheme,
   NotPage,
@@ -30,6 +31,7 @@ const App = () => (
       <Route exact path="/messages" component={Messages} />
       <Route path="/messages/write" component={MessageWrite} />
       <Route path="/messages/info/:id" component={MessageInfo} />
+      <Route path="/messages/send" component={MessageSend} />
       <Route component={NotPage} />
     </Switch>
   </React.Fragment>

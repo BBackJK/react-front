@@ -12,6 +12,7 @@ import {
   MessageMainContainer,
   MessageWriteContainer,
   MessageInfoContainer,
+  MessageSendContainer,
 } from './Message';
 
 export {
@@ -29,4 +30,5 @@ export {
   MessageMainContainer,
   MessageWriteContainer,
   MessageInfoContainer,
+  MessageSendContainer,
 };

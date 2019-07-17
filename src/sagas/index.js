@@ -5,6 +5,7 @@ import weather from './weather';
 import follow from './follow';
 import alarm from './alarm';
 import message from './message';
+import send from './send';
 
 export default function* rootSage() {
   yield all([
@@ -13,5 +14,6 @@ export default function* rootSage() {
     fork(follow),
     fork(alarm),
     fork(message),
+    fork(send),
   ]);
 }
