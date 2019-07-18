@@ -73,9 +73,9 @@ const MessageInfoContainer = ({ infoId }) => {
       <MessageInfoView messageInfo={messageInfo} onFunc={onUpdateSubmit}>
         <Button type="submit" ment="변경" />
         {'                                  '}
-        <Button type="button" ment="삭제" func={onDelete} />
+        <Button type="normal" ment="삭제" func={onDelete} />
         {'                                   '}
-        <Button type="button" ment="뒤로가기" />
+        <Button type="normal" ment="뒤로가기" />
       </MessageInfoView>
       <Modals
         link="/"

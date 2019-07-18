@@ -47,12 +47,12 @@ const ProfileMainContainer = () => {
       <ProfileForm userInfo={info}>
         <br />
         <Link to="/profile/update">
-          <Button type="button" ment="변경" func={null} />
+          <Button type="normal" ment="변경" func={null} />
         </Link>
         {'                                '}
-        <Button type="button" ment="로그아웃" func={onLogout} />
+        <Button type="normal" ment="로그아웃" func={onLogout} />
         {'                                '}
-        <Button type="button" ment="탈퇴" func={onDelete} />
+        <Button type="normal" ment="탈퇴" func={onDelete} />
       </ProfileForm>
       <Modals
         link="/"

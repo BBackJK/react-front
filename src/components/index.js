@@ -10,6 +10,7 @@ import {
   MessageInfoView,
   MessageSendForm,
 } from './Message';
+import { RecieveMainView, RecieveInfoView } from './Recieve';
 import MainView from './Home/MainView';
 
 export { default as App } from './App';
@@ -36,4 +37,6 @@ export {
   MessageWriteForm,
   MessageInfoView,
   MessageSendForm,
+  RecieveMainView,
+  RecieveInfoView,
 };

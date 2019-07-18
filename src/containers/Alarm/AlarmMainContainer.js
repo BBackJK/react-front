@@ -49,7 +49,7 @@ const AlarmMainContainer = () => {
         <p>로그인 하시고 서비스를 이용하세요!</p>
       </div>
       <Link to="/login">
-        <Button type="button" ment="로그인" func={null} />
+        <Button type="normal" ment="로그인" func={null} />
       </Link>
     </div>
   ) : (

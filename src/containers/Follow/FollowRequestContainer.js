@@ -43,7 +43,7 @@ const FollowRequestContainer = () => {
           followed.map(i => (
             <Lists key={i.id} lists={i} theme="user">
               <Button
-                type="button"
+                type="normal"
                 ment="요청수락"
                 func={() => {
                   const putData = {
@@ -65,7 +65,7 @@ const FollowRequestContainer = () => {
           ))
         )}
         <br />
-        <Button type="button" ment="뒤로가기" />
+        <Button type="normal" ment="뒤로가기" />
       </FollowRequestView>
       <Modals
         link="/"

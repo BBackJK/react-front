@@ -1,0 +1,14 @@
+.recieve-info-main {
+  text-align: center;
+}
+
+.recieve-info-table {
+  border-collapse: collapse;
+  margin: auto;
+}
+
+.recieve-info-th,
+.recieve-info-td {
+  padding: 8px;
+  text-align: left;
+}

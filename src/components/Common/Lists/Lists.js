@@ -37,12 +37,22 @@ const Lists = ({ lists, children, theme }) =>
         </li>
       </ul>
     </div>
-  ) : (
+  ) : theme === "message" ? (
     <div className="lists-main">
       <ul className="lists-ul">
         <li>
           <b>{lists.category}</b>
           {"                 "}({lists.created_at}){"                 "}
+          {children}
+        </li>
+      </ul>
+    </div>
+  ) : (
+    <div className="lists-main">
+      <ul className="lists-ul">
+        <li>
+          <b>{lists.user.name}</b>
+          {"                 "}({lists.contents}){"                 "}
           {children}
         </li>
       </ul>

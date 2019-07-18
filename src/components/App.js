@@ -15,6 +15,8 @@ import {
   NotPage,
   Profile,
   ProfileUpdate,
+  Recieve,
+  RecieveInfo,
 } from '../pages';
 
 const App = () => (
@@ -32,6 +34,8 @@ const App = () => (
       <Route path="/messages/write" component={MessageWrite} />
       <Route path="/messages/info/:id" component={MessageInfo} />
       <Route path="/messages/send" component={MessageSend} />
+      <Route exact path="/messages/recieve" component={Recieve} />
+      <Route path="/messages/recieve/info/:id" component={RecieveInfo} />
       <Route component={NotPage} />
     </Switch>
   </React.Fragment>

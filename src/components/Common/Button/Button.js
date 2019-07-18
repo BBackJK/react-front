@@ -4,25 +4,29 @@ import PropTypes from "prop-types";
 
 import "./Button.css";
 
-const Button = ({ type, func, ment }) => {
-  return ment.length > 4 ? (
-    <button type="button" className="button-normal-extension" onClick={func}>
-      {ment}
-    </button>
-  ) : type === "submit" ? (
+const Button = ({ type, func, ment, img }) => {
+  return type === "submit" ? (
     <button type="submit" className="button-submit">
       {ment}
     </button>
-  ) : type === "button" ? (
-    <button type="button" className="button-normal" onClick={func}>
+  ) : type === "normal" ? (
+    <button type="normal" className="button-normal" onClick={func}>
       {ment}
     </button>
   ) : type === "alarm" ? (
     <button type="alarm" className="button-alarm" onClick={func}>
       <div className="button-blink">{ment}</div>
     </button>
-  ) : (
+  ) : type === "info" ? (
     <button type="info" className="button-info" onClick={func}>
+      {ment}
+    </button>
+  ) : type === "message-info" ? (
+    <button type="info" className="button-message-info" onClick={func}>
+      {ment}
+    </button>
+  ) : (
+    <button type="button" className="button-normal-extension" onClick={func}>
       {ment}
     </button>
   );
@@ -30,8 +34,9 @@ const Button = ({ type, func, ment }) => {
 
 Button.propTypes = {
   type: PropTypes.string.isRequired,
-  ment: PropTypes.string.isRequired,
-  func: PropTypes.func
+  ment: PropTypes.string,
+  func: PropTypes.func,
+  img: PropTypes.node
 };
 
 Button.defaultProps = {

@@ -15,7 +15,7 @@ import { ADD_FOLLOW, ADD_FOLLOW_FAILURE } from '../../reducers/follow';
 
 const FollowSearchContainer = () => {
   const { token, searchUserData } = useSelector(state => state.user);
-  const { addErrorReason, isAddedFollow } = useSelector(state => state.follow);
+  const { addFollowErrorReason, isAddedFollow } = useSelector(state => state.follow);
 
   const dispatch = useDispatch();
 
@@ -49,15 +49,15 @@ const FollowSearchContainer = () => {
       </SearchForm>
       <br />
       {!searchUserData ? (
-        <FollowSearchView searchData={searchUserData} error={addErrorReason}>
+        <FollowSearchView searchData={searchUserData} error={addFollowErrorReason}>
           <div />
         </FollowSearchView>
       ) : (
-        <FollowSearchView searchData={searchUserData} error={addErrorReason}>
+        <FollowSearchView searchData={searchUserData} error={addFollowErrorReason}>
           {searchUserData.map(i => (
             <Lists key={i.id} lists={i} theme="user">
               <Button
-                type="button"
+                type="normal"
                 ment="친구요청"
                 func={() => {
                   const postData = {
@@ -79,7 +79,7 @@ const FollowSearchContainer = () => {
       )}
       <br />
       <div style={{ textAlign: 'center' }}>
-        <Button type="button" ment="뒤로가기" />
+        <Button type="normal" ment="뒤로가기" />
       </div>
       <Modals
         link="/"

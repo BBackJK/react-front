@@ -60,7 +60,7 @@ const FollowMainContainer = () => {
           follower.map(i => (
             <Lists key={i.id} lists={i} theme="user">
               <Button
-                type="button"
+                type="normal"
                 ment="삭제"
                 func={() => {
                   const deleteData = {
@@ -80,12 +80,12 @@ const FollowMainContainer = () => {
         )}
         {!token ? (
           <Link to="/login">
-            <Button type="button" ment="로그인" func={null} />
+            <Button type="normal" ment="로그인" func={null} />
           </Link>
         ) : (
           <div>
             <Link to="/follow/search">
-              <Button type="button" ment="친구검색" func={null} />
+              <Button type="normal" ment="친구검색" func={null} />
             </Link>
             {'                                    '}
             {followed.length > 0 ? (
@@ -94,7 +94,7 @@ const FollowMainContainer = () => {
               </Link>
             ) : (
               <Link to="/follow/followed">
-                <Button type="button" ment="요청알림" func={null} />
+                <Button type="normal" ment="요청알림" func={null} />
               </Link>
             )}
           </div>

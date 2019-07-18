@@ -29,7 +29,7 @@ const MessageMainContainer = () => {
         <p>로그인 하시고 서비스를 이용하세요!</p>
       </div>
       <Link to="/login">
-        <Button type="button" ment="로그인" func={null} />
+        <Button type="normal" ment="로그인" func={null} />
       </Link>
     </MessageMainView>
   ) : (
@@ -37,7 +37,7 @@ const MessageMainContainer = () => {
       <MessageMainView>
         {messages.length > 0 ? (
           messages.map(i => (
-            <Lists key={i.id} lists={i}>
+            <Lists key={i.id} lists={i} theme="message">
               <Link to={`/messages/info/${i.id}`}>
                 <Button type="info" ment="i" func={null} />
               </Link>
@@ -50,7 +50,7 @@ const MessageMainContainer = () => {
           </div>
         )}
         <Link to="/messages/write">
-          <Button type="button" ment="추가" func={null} />
+          <Button type="normal" ment="추가" func={null} />
         </Link>
       </MessageMainView>
     </div>

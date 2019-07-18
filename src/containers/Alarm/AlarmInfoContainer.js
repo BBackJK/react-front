@@ -78,9 +78,9 @@ const AlarmInfoContainer = ({ infoId }) => {
       <AlarmInfoView alarmInfo={alarmInfo} onFunc={onUpdateSubmit}>
         <Button type="submit" ment="등록" />
         {'                                      '}
-        <Button type="button" ment="삭제" func={onDelete} />
+        <Button type="normal" ment="삭제" func={onDelete} />
         {'                                        '}
-        <Button type="button" ment="뒤로가기" />
+        <Button type="normal" ment="뒤로가기" />
       </AlarmInfoView>
       <Modals
         link="/"

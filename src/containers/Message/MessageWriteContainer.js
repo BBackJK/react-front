@@ -34,7 +34,7 @@ const MessageWriteContainer = () => {
       <MessageWriteForm onFunc={onAddMessage}>
         <Button type="submit" ment="등록" />
         {'                                '}
-        <Button type="button" ment="뒤로가기" />
+        <Button type="normal" ment="뒤로가기" />
       </MessageWriteForm>
       {isAddedMsg && <Redirect to="/messages" />}
     </div>

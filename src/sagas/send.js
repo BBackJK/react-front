@@ -11,6 +11,9 @@ import {
   GET_RECIEVE_MESSAGE_INFO,
   GET_RECIEVE_MESSAGE_INFO_SUCCESS,
   GET_RECIEVE_MESSAGE_INFO_FAILURE,
+  READ_RECIEVE_MESSAGE,
+  READ_RECIEVE_MESSAGE_SUCCESS,
+  READ_RECIEVE_MESSAGE_FAILURE,
 } from '../reducers/send';
 
 // send message
@@ -41,7 +44,7 @@ function* watchSendMessage() {
 }
 
 function getRecieveMessageAPI(tokenData) {
-  return axios.get('http://localhost:8000/send/', {
+  return axios.get('http://localhost:8000/send/recieve', {
     headers: { 'x-access-token': tokenData.token },
   });
 }
@@ -66,8 +69,9 @@ function* watchGetRecieveMessage() {
   yield takeEvery(GET_RECIEVE_MESSAGE, getRecieveMessage);
 }
 
+// get recieve message info
 function getRecieveMessageInfoAPI(apiData) {
-  return axios.get(`http://localhost:8000/send/${apiData.id}`, {
+  return axios.get(`http://localhost:8000/send/recieve/${apiData.id}`, {
     headers: { 'x-access-token': apiData.token },
   });
 }
@@ -92,10 +96,37 @@ function* watchGetRecieveMessageInfo() {
   yield takeEvery(GET_RECIEVE_MESSAGE_INFO, getRecieveMessageInfo);
 }
 
+// read recieve message
+function readRecieveMessageAPI(apiData) {
+  return axios.put('http://localhost:8000/send', apiData.putData, {
+    headers: { 'x-access-token': apiData.token },
+  });
+}
+
+function* readRecieveMessage(action) {
+  try {
+    yield call(readRecieveMessageAPI, action.data);
+    yield put({
+      type: READ_RECIEVE_MESSAGE_SUCCESS,
+    });
+  } catch (err) {
+    console.log(err);
+    yield put({
+      type: READ_RECIEVE_MESSAGE_FAILURE,
+      error: err.response.status,
+    });
+  }
+}
+
+function* watchReadRecieveMessage() {
+  yield takeEvery(READ_RECIEVE_MESSAGE, readRecieveMessage);
+}
+
 export default function* sendSaga() {
   yield all([
     fork(watchSendMessage),
     fork(watchGetRecieveMessage),
     fork(watchGetRecieveMessageInfo),
+    fork(watchReadRecieveMessage),
   ]);
 }

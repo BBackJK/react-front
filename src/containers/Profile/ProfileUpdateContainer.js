@@ -49,10 +49,10 @@ const ProfileUpdateContainer = () => {
         <Button type="submit" ment="등록" />
         {'                                  '}
         {!info.auth_email && (
-          <Button type="button" ment="인증" func={onAuthEmail} />
+          <Button type="normal" ment="인증" func={onAuthEmail} />
         )}
         {'                                  '}
-        <Button type="button" ment="뒤로가기" />
+        <Button type="normal" ment="뒤로가기" />
       </ProfileUpdateForm>
       {isUpdatedUser && <Redirect to="/profile" />}
     </div>

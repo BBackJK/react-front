@@ -38,7 +38,7 @@ const MessageSendContainer = () => {
         type: SEND_MESSAGE_FAILURE,
       });
     }
-  }, [isSended]);
+  }, []);
 
   const onSendSubmit = useCallback((postData) => {
     const apiData = { postData, token };
@@ -58,7 +58,7 @@ const MessageSendContainer = () => {
       >
         <Button type="submit" ment="전송" />
         {'                                                    '}
-        <Button type="button" ment="뒤로가기" />
+        <Button type="normal" ment="뒤로가기" />
       </MessageSendForm>
       <Modals
         link="/"
