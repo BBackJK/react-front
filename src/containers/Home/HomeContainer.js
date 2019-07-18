@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useEffect } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -29,7 +30,9 @@ const HomeContainer = () => {
   }, []);
 
   if (recieveMessageLists.length > 0) {
-    findReaded = recieveMessageLists.find(i => i.readed === false);
+    recieveMessageLists.find(i => i.readed === false) === undefined
+      ? (findReaded = [])
+      : (findReaded = recieveMessageLists.find(i => i.readed === false));
   }
 
   return (
@@ -43,13 +46,13 @@ const HomeContainer = () => {
           <Button type="button" ment="알람 설정" func={null} />
         </Link>
         {'                                                    '}
-        {findReaded === undefined ? (
+        {findReaded.length !== 0 ? (
           <Link to="/messages/recieve">
-            <Button type="button" ment="메세지 함" func={null} />
+            <Button type="alarm" ment="메세지함" func={null} />
           </Link>
         ) : (
           <Link to="/messages/recieve">
-            <Button type="alarm" ment="메세지함" func={null} />
+            <Button type="button" ment="메세지 함" func={null} />
           </Link>
         )}
       </MainView>

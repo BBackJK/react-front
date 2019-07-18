@@ -46,6 +46,7 @@ const RecieveMainContainer = () => {
         ) : (
           <div>받은 메세지가 없습니다.</div>
         )}
+        <Button type="normal" ment="뒤로가기" />
       </RecieveMainView>
     </div>
   );
