@@ -1,16 +1,24 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-alert */
-/* eslint-disable no-restricted-globals */
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ProfileForm, Modals, Button } from '../../components';
-import { GET_INFO, LOG_OUT, DELETE_USER } from '../../reducers/user';
+import { ProfileForm, Modals, Button, EmailInput } from '../../components';
+import { GET_INFO, LOG_OUT } from '../../reducers/user';
+import {
+  SEND_EMAIL,
+  SEND_EMAIL_FAILURE,
+  AUTH_EMAIL,
+  AUTH_EMAIL_FAILURE,
+} from '../../reducers/email';
 
 const ProfileMainContainer = () => {
+  const [onEmail, setOnEmail] = useState(false);
   const { token, info, isLoggedOut, isDeletedUser } = useSelector(
     state => state.user,
+  );
+
+  const { isSendedEmail, isSendingEmail, isAuthedEmail } = useSelector(
+    state => state.email,
   );
   const dispatch = useDispatch();
 
@@ -21,7 +29,7 @@ const ProfileMainContainer = () => {
         token,
       },
     });
-  }, []);
+  }, [isSendedEmail, isAuthedEmail]);
 
   const onLogout = useCallback(() => {
     dispatch({
@@ -29,22 +37,59 @@ const ProfileMainContainer = () => {
     });
   });
 
-  const onDelete = useCallback(() => {
-    if (confirm('정말 탈퇴 하시겠습니까??') === true) {
-      dispatch({
-        type: DELETE_USER,
-        data: {
-          token,
-        },
-      });
-    } else {
-      return false;
-    }
+  const onAuthEmail = () => {
+    dispatch({
+      type: SEND_EMAIL,
+      data: {
+        token,
+      },
+    });
+  };
+
+  const onAuthSubmit = useCallback((putData) => {
+    const apiData = { putData, token };
+    dispatch({
+      type: AUTH_EMAIL,
+      data: apiData,
+    });
   });
+
+  if (isSendedEmail && !onEmail) {
+    alert('해당 계정으로 들어가 메일에서 인증번호를 입력하세요!');
+    setOnEmail(true);
+    dispatch({
+      type: SEND_EMAIL_FAILURE,
+    });
+  }
+
+  if (
+    info
+    && !info.auth_email
+    && !onEmail
+    && !isSendedEmail
+    && !isSendingEmail
+  ) {
+    alert(
+      '인증되지 않은 이메일입니다. [메일인증]탭을 눌러 이메일 인증해주세요!',
+    );
+  }
+
+  if (isAuthedEmail) {
+    alert('인증 성공');
+    setOnEmail(false);
+    dispatch({
+      type: AUTH_EMAIL_FAILURE,
+    });
+  }
 
   return (
     <div>
       <ProfileForm userInfo={info}>
+        {onEmail && (
+          <EmailInput onFunc={onAuthSubmit}>
+            <Button type="submit" ment="인증" />
+          </EmailInput>
+        )}
         <br />
         <Link to="/profile/update">
           <Button type="normal" ment="변경" func={null} />
@@ -52,7 +97,9 @@ const ProfileMainContainer = () => {
         {'                                '}
         <Button type="normal" ment="로그아웃" func={onLogout} />
         {'                                '}
-        <Button type="normal" ment="탈퇴" func={onDelete} />
+        {info && !info.auth_email && (
+          <Button type="normal" ment="메일인증" func={onAuthEmail} />
+        )}
       </ProfileForm>
       <Modals
         link="/"
@@ -67,6 +114,7 @@ const ProfileMainContainer = () => {
         visible={isLoggedOut}
       />
       {isDeletedUser && <Redirect to="/" />}
+      {isAuthedEmail && <Redirect to="/profile" />}
     </div>
   );
 };

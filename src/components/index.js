@@ -1,6 +1,6 @@
 import { Header, Footer, NavBar } from './Layout';
 import { SignUpForm, SignInForm } from './Auth';
-import { Modals, Button, SearchForm, Lists } from './Common';
+import { Modals, Button, SearchForm, Lists, EmailInput } from './Common';
 import { ProfileForm, ProfileUpdateForm } from './Profile';
 import { FollowMainView, FollowRequestView, FollowSearchView } from './Follow';
 import { AlarmMainView, AlarmInfoView } from './Alarm';
@@ -39,4 +39,5 @@ export {
   MessageSendForm,
   RecieveMainView,
   RecieveInfoView,
+  EmailInput,
 };

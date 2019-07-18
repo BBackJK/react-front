@@ -1,9 +1,16 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
 import React, { useCallback, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ProfileUpdateForm, Button, Modals } from '../../components';
-import { INFO_UPDATE, INFO_UPDATE_FAILURE } from '../../reducers/user';
+import {
+  INFO_UPDATE,
+  INFO_UPDATE_FAILURE,
+  DELETE_USER,
+} from '../../reducers/user';
 
 const ProfileUpdateContainer = () => {
   const { token, info, isUpdatedUser } = useSelector(state => state.user);
@@ -14,9 +21,6 @@ const ProfileUpdateContainer = () => {
     dispatch({
       type: INFO_UPDATE_FAILURE,
     });
-    if (info && !info.auth_email && !isUpdatedUser) {
-      alert('인증되지 않은 이메일입니다. [인증]탭을 눌러 이메일 인증해주세요!');
-    }
   }, [isUpdatedUser]);
 
   const onUpdateSubmit = useCallback((putData) => {
@@ -27,9 +31,18 @@ const ProfileUpdateContainer = () => {
     });
   });
 
-  const onAuthEmail = () => {
-    console.log('이메일 인증 클릭');
-  };
+  const onDelete = useCallback(() => {
+    if (confirm('정말 탈퇴 하시겠습니까??') === true) {
+      dispatch({
+        type: DELETE_USER,
+        data: {
+          token,
+        },
+      });
+    } else {
+      return false;
+    }
+  });
 
   if (isUpdatedUser) {
     alert('변경 성공');
@@ -48,9 +61,7 @@ const ProfileUpdateContainer = () => {
         <br />
         <Button type="submit" ment="등록" />
         {'                                  '}
-        {!info.auth_email && (
-          <Button type="normal" ment="인증" func={onAuthEmail} />
-        )}
+        <Button type="normal" ment="회원탈퇴" func={onDelete} />
         {'                                  '}
         <Button type="normal" ment="뒤로가기" />
       </ProfileUpdateForm>

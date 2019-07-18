@@ -6,6 +6,7 @@ import follow from './follow';
 import alarm from './alarm';
 import message from './message';
 import send from './send';
+import email from './email';
 
 export default function* rootSage() {
   yield all([
@@ -15,5 +16,6 @@ export default function* rootSage() {
     fork(alarm),
     fork(message),
     fork(send),
+    fork(email),
   ]);
 }

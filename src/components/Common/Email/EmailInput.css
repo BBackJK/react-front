@@ -1,0 +1,12 @@
+.email-input-main {
+  text-align: center;
+}
+
+.email-input-input {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-radius: 5px;
+
+  height: 40px;
+}
