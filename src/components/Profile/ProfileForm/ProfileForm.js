@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import "./ProfileForm.css";
+import { dateConverter } from "../../../util";
 
 const ProfileForm = ({ userInfo, children }) =>
   !userInfo ? (
@@ -36,7 +37,7 @@ const ProfileForm = ({ userInfo, children }) =>
           </tr>
           <tr>
             <th className="profile-th">date</th>
-            <td className="profile-td">{userInfo.created_at}</td>
+            <td className="profile-td">{dateConverter(userInfo.created_at)}</td>
           </tr>
         </tbody>
       </table>

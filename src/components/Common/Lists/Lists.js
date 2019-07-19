@@ -2,10 +2,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import { dateConverter } from "../../../util";
 import "./Lists.css";
 
-const Lists = ({ lists, children, theme }) =>
-  theme === "user" ? (
+const Lists = ({ lists, children, theme }) => {
+  return theme === "user" ? (
     !lists.user ? (
       <div className="lists-main">
         <ul className="lists-ul">
@@ -32,7 +33,8 @@ const Lists = ({ lists, children, theme }) =>
       <ul className="lists-ul">
         <li>
           <b>{lists.title}</b>
-          {"                 "}({lists.created_at}){"                 "}
+          {"                 "}({dateConverter(lists.created_at)})
+          {"                 "}
           {children}
         </li>
       </ul>
@@ -42,7 +44,8 @@ const Lists = ({ lists, children, theme }) =>
       <ul className="lists-ul">
         <li>
           <b>{lists.category}</b>
-          {"                 "}({lists.created_at}){"                 "}
+          {"                 "}({dateConverter(lists.created_at)})
+          {"                 "}
           {children}
         </li>
       </ul>
@@ -50,14 +53,19 @@ const Lists = ({ lists, children, theme }) =>
   ) : (
     <div className="lists-main">
       <ul className="lists-ul">
-        <li>
+        <li className="lists-li">
           <b>{lists.user.name}</b>
-          {"                 "}({lists.contents}){"                 "}
+          {"                 "}
+          {lists.contents.length > 12
+            ? "(" + lists.contents.substring(0, 13) + "...)"
+            : "(" + lists.contents + ")"}
+          {"                 "}
           {children}
         </li>
       </ul>
     </div>
   );
+};
 Lists.propTypes = {
   lists: PropTypes.object.isRequired,
   children: PropTypes.node,

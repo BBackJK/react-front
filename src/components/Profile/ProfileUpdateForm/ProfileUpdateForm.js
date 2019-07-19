@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { isMobilePhone, isLength } from 'validator';
 
-import { useInput } from '../../../util';
+import { useInput, dateConverter } from '../../../util';
 import './ProfileUpdateForm.css';
 
 const ProfileUpdateForm = ({ userInfo, onFunc, children }) => {
@@ -76,7 +76,9 @@ const ProfileUpdateForm = ({ userInfo, onFunc, children }) => {
             </tr>
             <tr>
               <th className="profile-update-th">date</th>
-              <td className="profile-update-td">{userInfo.created_at}</td>
+              <td className="profile-update-td">
+                {dateConverter(userInfo.created_at)}
+              </td>
             </tr>
           </tbody>
         </table>

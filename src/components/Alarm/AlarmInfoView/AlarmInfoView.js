@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import { useInput } from '../../../util';
+import { useInput, dateConverter } from '../../../util';
 import './AlarmInfoView.css';
 
 const AlarmInfoView = ({ alarmInfo, children, onFunc }) => {
@@ -47,14 +47,18 @@ const AlarmInfoView = ({ alarmInfo, children, onFunc }) => {
             </tr>
             <tr>
               <th className="alarm-info-th">date</th>
-              <td className="alarm-info-td">{alarmInfo.created_at}</td>
+              <td className="alarm-info-td">
+                {dateConverter(alarmInfo.created_at)}
+              </td>
             </tr>
             <tr>
               <th className="alarm-info-th">update date</th>
               {!alarmInfo.updated_at ? (
                 <td className="alarm-info-td">변경한 기록이 없습니다.</td>
               ) : (
-                <td className="alarm-info-td">{alarmInfo.updated_at}</td>
+                <td className="alarm-info-td">
+                  {dateConverter(alarmInfo.updated_at)}
+                </td>
               )}
             </tr>
           </tbody>

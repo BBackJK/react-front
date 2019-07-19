@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import { useInput } from '../../../util';
+import { useInput, dateConverter } from '../../../util';
 import './MessageInfoView.css';
 
 const MessageInfoView = ({ messageInfo, children, onFunc }) => {
@@ -57,14 +57,18 @@ const MessageInfoView = ({ messageInfo, children, onFunc }) => {
             </tr>
             <tr>
               <th className="message-info-th">date</th>
-              <td className="message-info-td">{messageInfo.created_at}</td>
+              <td className="message-info-td">
+                {dateConverter(messageInfo.created_at)}
+              </td>
             </tr>
             <tr>
               <th className="message-info-th">update date</th>
               {!messageInfo.updated_at ? (
                 <td className="message-info-td">변경한 기록이 없습니다.</td>
               ) : (
-                <td className="message-info-td">{messageInfo.updated_at}</td>
+                <td className="message-info-td">
+                  {dateConverter(messageInfo.updated_at)}
+                </td>
               )}
             </tr>
           </thead>

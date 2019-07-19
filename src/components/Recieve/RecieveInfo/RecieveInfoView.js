@@ -1,12 +1,13 @@
+/* eslint-disable no-confusing-arrow */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable indent */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 import './RecieveInfoView.css';
+import { dateConverter } from '../../../util';
 
-const RecieveInfoView = ({ recieveInfo, children }) => {
-  console.log(recieveInfo);
-
-  return !recieveInfo ? (
+const RecieveInfoView = ({ recieveInfo, children }) => !recieveInfo ? (
     <div className="recieve-info-main">
       잠시만 기다려주세요! 정보를 읽어오는 중 입니다..
     </div>
@@ -33,18 +34,26 @@ const RecieveInfoView = ({ recieveInfo, children }) => {
           </tr>
           <tr>
             <th className="recieve-info-th">date</th>
-            <td className="recieve-info-td">{recieveInfo.sended_at}</td>
+            <td className="recieve-info-td">
+              {dateConverter(recieveInfo.sended_at)}
+            </td>
           </tr>
           <tr>
             <th className="recieve-info-th">contents</th>
-            <td className="recieve-info-td">{recieveInfo.contents}</td>
+            <td className="recieve-info-td">
+              <textarea
+                className="recieve-info-textarea"
+                placeholder={recieveInfo.contents}
+                readOnly="readOnly"
+                disabled
+              />
+            </td>
           </tr>
         </thead>
       </table>
       {children}
     </div>
   );
-};
 
 RecieveInfoView.propTypes = {
   recieveInfo: PropTypes.object,
