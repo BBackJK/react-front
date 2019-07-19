@@ -20,12 +20,16 @@ const RecieveInfoView = ({ recieveInfo, children }) => {
             <td className="recieve-info-td">{recieveInfo.user.name}</td>
           </tr>
           <tr>
-            <th className="recieve-info-th">latitude</th>
-            <td className="recieve-info-td">{recieveInfo.lat}</td>
-          </tr>
-          <tr>
-            <th className="recieve-info-th">longitude</th>
-            <td className="recieve-info-td">{recieveInfo.lng}</td>
+            <th className="recieve-info-th">location</th>
+            <td className="recieve-info-td">
+              <a
+                href={`javascript:window.open('https://www.google.co.kr/maps/search/${
+                  recieveInfo.lat
+                },+${recieveInfo.lng}/','_blank');`}
+              >
+                위치 확인하기
+              </a>
+            </td>
           </tr>
           <tr>
             <th className="recieve-info-th">date</th>
