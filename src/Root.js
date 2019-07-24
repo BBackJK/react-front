@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -13,4 +14,4 @@ const Root = () => (
   </Provider>
 );
 
-export default Root;
+export default hot(Root);
