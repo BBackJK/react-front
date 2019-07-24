@@ -1,19 +1,19 @@
-.recieve-info-main {
+.receive-info-main {
   text-align: center;
 }
 
-.recieve-info-table {
+.receive-info-table {
   border-collapse: collapse;
   margin: auto;
 }
 
-.recieve-info-th,
-.recieve-info-td {
+.receive-info-th,
+.receive-info-td {
   padding: 8px;
   text-align: left;
 }
 
-.recieve-info-textarea {
+.receive-info-textarea {
   border: none;
   resize: none;
   background-color: white;

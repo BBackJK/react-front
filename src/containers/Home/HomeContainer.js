@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { MainView, Button } from '../../components';
 import { GET_WEATHER } from '../../reducers/weather';
-import { GET_RECIEVE_MESSAGE } from '../../reducers/send';
+import { GET_RECEIVE_MESSAGE } from '../../reducers/send';
 
 let findReaded = [];
 
 const HomeContainer = () => {
   const { weatherInfo } = useSelector(state => state.weather);
   const { token } = useSelector(state => state.user);
-  const { recieveMessageLists } = useSelector(state => state.send);
+  const { receiveMessageLists } = useSelector(state => state.send);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const HomeContainer = () => {
         type: GET_WEATHER,
       });
       dispatch({
-        type: GET_RECIEVE_MESSAGE,
+        type: GET_RECEIVE_MESSAGE,
         data: {
           token,
         },
@@ -29,10 +29,10 @@ const HomeContainer = () => {
     }
   }, []);
 
-  if (recieveMessageLists.length > 0) {
-    recieveMessageLists.find(i => i.readed === false) === undefined
+  if (receiveMessageLists.length > 0) {
+    receiveMessageLists.find(i => i.readed === false) === undefined
       ? (findReaded = [])
-      : (findReaded = recieveMessageLists.find(i => i.readed === false));
+      : (findReaded = receiveMessageLists.find(i => i.readed === false));
   }
 
   return (
@@ -42,16 +42,12 @@ const HomeContainer = () => {
           <Button type="button" ment="메세지 보내기" func={null} />
         </Link>
         {'                                                    '}
-        <Link to="/alarms/setting">
-          <Button type="button" ment="알람 설정" func={null} />
-        </Link>
-        {'                                                    '}
         {findReaded.length !== 0 ? (
-          <Link to="/messages/recieve">
+          <Link to="/messages/receive">
             <Button type="alarm" ment="메세지함" func={null} />
           </Link>
         ) : (
-          <Link to="/messages/recieve">
+          <Link to="/messages/receive">
             <Button type="button" ment="메세지 함" func={null} />
           </Link>
         )}

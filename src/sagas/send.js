@@ -5,15 +5,15 @@ import {
   SEND_MESSAGE,
   SEND_MESSAGE_SUCCESS,
   SEND_MESSAGE_FAILURE,
-  GET_RECIEVE_MESSAGE,
-  GET_RECIEVE_MESSAGE_SUCCESS,
-  GET_RECIEVE_MESSAGE_FAILURE,
-  GET_RECIEVE_MESSAGE_INFO,
-  GET_RECIEVE_MESSAGE_INFO_SUCCESS,
-  GET_RECIEVE_MESSAGE_INFO_FAILURE,
-  READ_RECIEVE_MESSAGE,
-  READ_RECIEVE_MESSAGE_SUCCESS,
-  READ_RECIEVE_MESSAGE_FAILURE,
+  GET_RECEIVE_MESSAGE,
+  GET_RECEIVE_MESSAGE_SUCCESS,
+  GET_RECEIVE_MESSAGE_FAILURE,
+  GET_RECEIVE_MESSAGE_INFO,
+  GET_RECEIVE_MESSAGE_INFO_SUCCESS,
+  GET_RECEIVE_MESSAGE_INFO_FAILURE,
+  READ_RECEIVE_MESSAGE,
+  READ_RECEIVE_MESSAGE_SUCCESS,
+  READ_RECEIVE_MESSAGE_FAILURE,
 } from '../reducers/send';
 
 // send message
@@ -38,95 +38,95 @@ function* sendMessage(action) {
   }
 }
 
-// get recieve message list
+// get receive message list
 function* watchSendMessage() {
   yield takeEvery(SEND_MESSAGE, sendMessage);
 }
 
-function getRecieveMessageAPI(tokenData) {
-  return axios.get('http://localhost:8000/send/recieve', {
+function getReceiveMessageAPI(tokenData) {
+  return axios.get('http://localhost:8000/send/receive', {
     headers: { 'x-access-token': tokenData.token },
   });
 }
 
-function* getRecieveMessage(action) {
+function* getReceiveMessage(action) {
   try {
-    const result = yield call(getRecieveMessageAPI, action.data);
+    const result = yield call(getReceiveMessageAPI, action.data);
     yield put({
-      type: GET_RECIEVE_MESSAGE_SUCCESS,
+      type: GET_RECEIVE_MESSAGE_SUCCESS,
       data: result.data,
     });
   } catch (err) {
     console.log(err);
     yield put({
-      type: GET_RECIEVE_MESSAGE_FAILURE,
+      type: GET_RECEIVE_MESSAGE_FAILURE,
       error: err.response.status,
     });
   }
 }
 
-function* watchGetRecieveMessage() {
-  yield takeEvery(GET_RECIEVE_MESSAGE, getRecieveMessage);
+function* watchGetReceiveMessage() {
+  yield takeEvery(GET_RECEIVE_MESSAGE, getReceiveMessage);
 }
 
-// get recieve message info
-function getRecieveMessageInfoAPI(apiData) {
-  return axios.get(`http://localhost:8000/send/recieve/${apiData.id}`, {
+// get receive message info
+function getReceiveMessageInfoAPI(apiData) {
+  return axios.get(`http://localhost:8000/send/receive/${apiData.id}`, {
     headers: { 'x-access-token': apiData.token },
   });
 }
 
-function* getRecieveMessageInfo(action) {
+function* getReceiveMessageInfo(action) {
   try {
-    const result = yield call(getRecieveMessageInfoAPI, action.data);
+    const result = yield call(getReceiveMessageInfoAPI, action.data);
     yield put({
-      type: GET_RECIEVE_MESSAGE_INFO_SUCCESS,
+      type: GET_RECEIVE_MESSAGE_INFO_SUCCESS,
       data: result.data,
     });
   } catch (err) {
     console.log(err);
     yield put({
-      type: GET_RECIEVE_MESSAGE_INFO_FAILURE,
+      type: GET_RECEIVE_MESSAGE_INFO_FAILURE,
       error: err.response.status,
     });
   }
 }
 
-function* watchGetRecieveMessageInfo() {
-  yield takeEvery(GET_RECIEVE_MESSAGE_INFO, getRecieveMessageInfo);
+function* watchGetReceiveMessageInfo() {
+  yield takeEvery(GET_RECEIVE_MESSAGE_INFO, getReceiveMessageInfo);
 }
 
-// read recieve message
-function readRecieveMessageAPI(apiData) {
+// read receive message
+function readReceiveMessageAPI(apiData) {
   return axios.put('http://localhost:8000/send', apiData.putData, {
     headers: { 'x-access-token': apiData.token },
   });
 }
 
-function* readRecieveMessage(action) {
+function* readReceiveMessage(action) {
   try {
-    yield call(readRecieveMessageAPI, action.data);
+    yield call(readReceiveMessageAPI, action.data);
     yield put({
-      type: READ_RECIEVE_MESSAGE_SUCCESS,
+      type: READ_RECEIVE_MESSAGE_SUCCESS,
     });
   } catch (err) {
     console.log(err);
     yield put({
-      type: READ_RECIEVE_MESSAGE_FAILURE,
+      type: READ_RECEIVE_MESSAGE_FAILURE,
       error: err.response.status,
     });
   }
 }
 
-function* watchReadRecieveMessage() {
-  yield takeEvery(READ_RECIEVE_MESSAGE, readRecieveMessage);
+function* watchReadReceiveMessage() {
+  yield takeEvery(READ_RECEIVE_MESSAGE, readReceiveMessage);
 }
 
 export default function* sendSaga() {
   yield all([
     fork(watchSendMessage),
-    fork(watchGetRecieveMessage),
-    fork(watchGetRecieveMessageInfo),
-    fork(watchReadRecieveMessage),
+    fork(watchGetReceiveMessage),
+    fork(watchGetReceiveMessageInfo),
+    fork(watchReadReceiveMessage),
   ]);
 }

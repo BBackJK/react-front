@@ -12,5 +12,5 @@ export { default as AlarmInfo } from './AlarmInfo';
 export { default as NotPage } from './NotPage';
 export { default as Profile } from './Profile';
 export { default as ProfileUpdate } from './ProfileUpdate';
-export { default as Recieve } from './Recieve';
-export { default as RecieveInfo } from './RecieveInfo';
+export { default as Receive } from './Receive';
+export { default as ReceiveInfo } from './ReceiveInfo';

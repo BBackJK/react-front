@@ -12,11 +12,11 @@ import {
   MessageSend,
   Follow,
   FollowTheme,
-  NotPage,
   Profile,
   ProfileUpdate,
-  Recieve,
-  RecieveInfo,
+  Receive,
+  ReceiveInfo,
+  NotPage,
 } from '../pages';
 
 const App = () => (
@@ -34,8 +34,8 @@ const App = () => (
       <Route path="/messages/write" component={MessageWrite} />
       <Route path="/messages/info/:id" component={MessageInfo} />
       <Route path="/messages/send" component={MessageSend} />
-      <Route exact path="/messages/recieve" component={Recieve} />
-      <Route path="/messages/recieve/info/:id" component={RecieveInfo} />
+      <Route exact path="/messages/receive" component={Receive} />
+      <Route path="/messages/receive/info/:id" component={ReceiveInfo} />
       <Route component={NotPage} />
     </Switch>
   </React.Fragment>

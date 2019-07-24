@@ -7,35 +7,35 @@ const initialState = {
   isSended: false, // 메세지 전송 성공
   sendErrorReason: '', // 메세지 전송 실패 사유
 
-  isGettingRecieve: false, // 수신 메시지 가져오는 중
-  getRecieveErrorReason: '', // 수신 메세지 가져오기 실패 사유
+  isGettingReceive: false, // 수신 메시지 가져오는 중
+  getReceiveErrorReason: '', // 수신 메세지 가져오기 실패 사유
 
-  isGettingRecieveInfo: false, // 수신 메세지 정보 가져오는 중
-  getRecieveInfoErrorReason: '', // 수신 메세지 정보 가져오기 실패 사유
+  isGettingReceiveInfo: false, // 수신 메세지 정보 가져오는 중
+  getReceiveInfoErrorReason: '', // 수신 메세지 정보 가져오기 실패 사유
 
   isReading: false, // 수신 메세지 읽는 중
   isReaded: false, // 수신 메세지 읽기 성공
   readErrorReason: '', // 수신 메세지 읽기 실패 사유
 
-  recieveMessageLists: [], // 수신 메세지 리스트
-  recieveMessageInfo: null, // 수신 메세지 정보
+  receiveMessageLists: [], // 수신 메세지 리스트
+  receiveMessageInfo: null, // 수신 메세지 정보
 };
 
 export const SEND_MESSAGE = 'SEND_MESSAGE';
 export const SEND_MESSAGE_SUCCESS = 'SEND_MESSAGE_SUCCESS';
 export const SEND_MESSAGE_FAILURE = 'SEND_MESSAGE_FAILURE';
 
-export const GET_RECIEVE_MESSAGE = 'GET_RECIEVE_MESSAGE';
-export const GET_RECIEVE_MESSAGE_SUCCESS = 'GET_RECIEVE_MESSAGE_SUCCESS';
-export const GET_RECIEVE_MESSAGE_FAILURE = 'GET_RECIEVE_MESSAGE_FAILURE';
+export const GET_RECEIVE_MESSAGE = 'GET_RECEIVE_MESSAGE';
+export const GET_RECEIVE_MESSAGE_SUCCESS = 'GET_RECEIVE_MESSAGE_SUCCESS';
+export const GET_RECEIVE_MESSAGE_FAILURE = 'GET_RECEIVE_MESSAGE_FAILURE';
 
-export const GET_RECIEVE_MESSAGE_INFO = 'GET_RECIEVE_MESSAGE_INFO';
-export const GET_RECIEVE_MESSAGE_INFO_SUCCESS =  'GET_RECIEVE_MESSAGE_INFO_SUCCESS';
-export const GET_RECIEVE_MESSAGE_INFO_FAILURE =  'GET_RECIEVE_MESSAGE_INFO_FAILURE';
+export const GET_RECEIVE_MESSAGE_INFO = 'GET_RECEIVE_MESSAGE_INFO';
+export const GET_RECEIVE_MESSAGE_INFO_SUCCESS =  'GET_RECEIVE_MESSAGE_INFO_SUCCESS';
+export const GET_RECEIVE_MESSAGE_INFO_FAILURE =  'GET_RECEIVE_MESSAGE_INFO_FAILURE';
 
-export const READ_RECIEVE_MESSAGE = 'READ_MESSAGE';
-export const READ_RECIEVE_MESSAGE_SUCCESS = 'READ_MESSAGE_SUCCESS';
-export const READ_RECIEVE_MESSAGE_FAILURE = 'READ_MESSAGE_FAILURE';
+export const READ_RECEIVE_MESSAGE = 'READ_MESSAGE';
+export const READ_RECEIVE_MESSAGE_SUCCESS = 'READ_MESSAGE_SUCCESS';
+export const READ_RECEIVE_MESSAGE_FAILURE = 'READ_MESSAGE_FAILURE';
 
 export default (state = initialState, action) => produce(state, (draft) => {
     switch (action.type) {
@@ -61,66 +61,66 @@ export default (state = initialState, action) => produce(state, (draft) => {
         break;
       }
 
-      // get recieve message lists
-      case GET_RECIEVE_MESSAGE: {
-        draft.isGettingRecieve = true;
-        draft.getRecieveErrorReason = '';
-        draft.recieveMessageLists = [];
+      // get receive message lists
+      case GET_RECEIVE_MESSAGE: {
+        draft.isGettingReceive = true;
+        draft.getReceiveErrorReason = '';
+        draft.receiveMessageLists = [];
         break;
       }
 
-      case GET_RECIEVE_MESSAGE_SUCCESS: {
-        draft.isGettingRecieve = false;
-        draft.getRecieveErrorReason = '';
-        draft.recieveMessageLists = action.data;
+      case GET_RECEIVE_MESSAGE_SUCCESS: {
+        draft.isGettingReceive = false;
+        draft.getReceiveErrorReason = '';
+        draft.receiveMessageLists = action.data;
         break;
       }
 
-      case GET_RECIEVE_MESSAGE_FAILURE: {
-        draft.isGettingRecieve = false;
-        draft.getRecieveErrorReason = action.error;
-        draft.recieveMessageLists = [];
+      case GET_RECEIVE_MESSAGE_FAILURE: {
+        draft.isGettingReceive = false;
+        draft.getReceiveErrorReason = action.error;
+        draft.receiveMessageLists = [];
         break;
       }
 
-      // get recieve message info
-      case GET_RECIEVE_MESSAGE_INFO: {
-        draft.isGettingRecieveInfo = true;
-        draft.getRecieveInfoErrorReason = '';
-        draft.recieveMessageInfo = null;
+      // get receive message info
+      case GET_RECEIVE_MESSAGE_INFO: {
+        draft.isGettingReceiveInfo = true;
+        draft.getReceiveInfoErrorReason = '';
+        draft.receiveMessageInfo = null;
         break;
       }
 
-      case GET_RECIEVE_MESSAGE_INFO_SUCCESS: {
-        draft.isGettingRecieveInfo = false;
-        draft.getRecieveInfoErrorReason = '';
-        draft.recieveMessageInfo = action.data;
+      case GET_RECEIVE_MESSAGE_INFO_SUCCESS: {
+        draft.isGettingReceiveInfo = false;
+        draft.getReceiveInfoErrorReason = '';
+        draft.receiveMessageInfo = action.data;
         break;
       }
 
-      case GET_RECIEVE_MESSAGE_INFO_FAILURE: {
-        draft.isGettingRecieveInfo = true;
-        draft.getRecieveInfoErrorReason = action.error;
-        draft.recieveMessageInfo = null;
+      case GET_RECEIVE_MESSAGE_INFO_FAILURE: {
+        draft.isGettingReceiveInfo = true;
+        draft.getReceiveInfoErrorReason = action.error;
+        draft.receiveMessageInfo = null;
         break;
       }
 
-      // read recieve message
-      case READ_RECIEVE_MESSAGE: {
+      // read receive message
+      case READ_RECEIVE_MESSAGE: {
         draft.isReading = true;
         draft.isReaded = false;
         draft.readErrorReason = '';
         break;
       }
 
-      case READ_RECIEVE_MESSAGE_SUCCESS: {
+      case READ_RECEIVE_MESSAGE_SUCCESS: {
         draft.isReading = false;
         draft.isReaded = true;
         draft.readErrorReason = '';
         break;
       }
 
-      case READ_RECIEVE_MESSAGE_FAILURE: {
+      case READ_RECEIVE_MESSAGE_FAILURE: {
         draft.isReading = false;
         draft.isReaded = false;
         draft.readErrorReason = action.error;
