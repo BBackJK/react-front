@@ -26,7 +26,7 @@ password: process.env.DATABASE_PASSWORD || 'test',
 host: process.env.DATABASE_HOST || 'localhost',
 ```
 
-> > go [GAEDDAL_API](https://github.com/BBackJK/gaeddal_api.git)
+> go [GAEDDAL_API](https://github.com/BBackJK/gaeddal_api.git)
 
 if you start this project, you start with the database settings first.
 In other words, you need to install mysql and create the **gaeddal** database.
