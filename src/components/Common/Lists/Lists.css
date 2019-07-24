@@ -6,6 +6,10 @@
   list-style: none;
 }
 
-.lists-li {
-  width: 100%;
+.lists-li-readed {
+  color: rgb(119, 116, 116);
+}
+
+.lists-li-unreaded {
+  color: black;
 }

@@ -53,15 +53,27 @@ const Lists = ({ lists, children, theme }) => {
   ) : (
     <div className="lists-main">
       <ul className="lists-ul">
-        <li className="lists-li">
-          <b>{lists.user.name}</b>
-          {"                 "}
-          {lists.contents.length > 12
-            ? "(" + lists.contents.substring(0, 13) + "...)"
-            : "(" + lists.contents + ")"}
-          {"                 "}
-          {children}
-        </li>
+        {lists.readed ? (
+          <li className="lists-li-readed">
+            {lists.user.name}
+            {"                 "}
+            {lists.contents.length > 12
+              ? "(" + lists.contents.substring(0, 13) + "...)"
+              : "(" + lists.contents + ")"}
+            {"                 "}
+            {children}
+          </li>
+        ) : (
+          <li className="lists-li-unreaded">
+            <b>{lists.user.name}</b>
+            {"                 "}
+            {lists.contents.length > 12
+              ? "(" + lists.contents.substring(0, 13) + "...)"
+              : "(" + lists.contents + ")"}
+            {"                 "}
+            {children}
+          </li>
+        )}
       </ul>
     </div>
   );
