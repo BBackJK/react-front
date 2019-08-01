@@ -21,18 +21,6 @@ const ReceiveInfoView = ({ receiveInfo, children }) => !receiveInfo ? (
             <td className="receive-info-td">{receiveInfo.user.name}</td>
           </tr>
           <tr>
-            <th className="receive-info-th">location</th>
-            <td className="receive-info-td">
-              <a
-                href={`javascript:window.open('https://www.google.co.kr/maps/search/${
-                  receiveInfo.lat
-                },+${receiveInfo.lng}/','_blank');`}
-              >
-                위치 확인하기
-              </a>
-            </td>
-          </tr>
-          <tr>
             <th className="receive-info-th">date</th>
             <td className="receive-info-td">
               {dateConverter(receiveInfo.sended_at)}

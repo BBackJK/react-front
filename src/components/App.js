@@ -17,6 +17,7 @@ import {
   Receive,
   ReceiveInfo,
   NotPage,
+  Maps,
 } from '../pages';
 
 const App = () => (
@@ -35,7 +36,8 @@ const App = () => (
       <Route path="/messages/info/:id" component={MessageInfo} />
       <Route path="/messages/send" component={MessageSend} />
       <Route exact path="/messages/receive" component={Receive} />
-      <Route path="/messages/receive/info/:id" component={ReceiveInfo} />
+      <Route exact path="/messages/receive/info/:id" component={ReceiveInfo} />
+      <Route path="/messages/receive/info/:id/locations" component={Maps} />
       <Route component={NotPage} />
     </Switch>
   </React.Fragment>

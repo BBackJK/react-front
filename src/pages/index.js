@@ -14,3 +14,4 @@ export { default as Profile } from './Profile';
 export { default as ProfileUpdate } from './ProfileUpdate';
 export { default as Receive } from './Receive';
 export { default as ReceiveInfo } from './ReceiveInfo';
+export { default as Maps } from './Maps';

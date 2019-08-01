@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ReceiveInfoView, Button } from '../../components';
@@ -8,7 +9,10 @@ import {
   READ_RECEIVE_MESSAGE,
 } from '../../reducers/send';
 
+let locationData = null;
+
 const ReceiveInfoContainer = ({ infoId }) => {
+  const [queryFlag, setQueryFlag] = useState(false);
   const [readFlag, setReadFlag] = useState(false);
   const { token } = useSelector(state => state.user);
   const { receiveMessageInfo } = useSelector(state => state.send);
@@ -39,9 +43,20 @@ const ReceiveInfoContainer = ({ infoId }) => {
     });
   }
 
+  if (receiveMessageInfo && !queryFlag) {
+    locationData = [receiveMessageInfo.lat, receiveMessageInfo.lng];
+    setQueryFlag(true);
+  }
+
   return (
     <div>
       <ReceiveInfoView receiveInfo={receiveMessageInfo}>
+        <Link
+          to={`/messages/receive/info/${infoId}/locations?latlng=${locationData}`}
+        >
+          <Button type="normal" ment="위치확인" func={null} />
+        </Link>
+        {'                                    '}
         <Button type="normal" ment="뒤로가기" />
       </ReceiveInfoView>
     </div>

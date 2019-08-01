@@ -15,7 +15,11 @@ import {
   MessageSendContainer,
 } from './Message';
 
-import { ReceiveMainContainer, ReceiveInfoContainer } from './Receive';
+import {
+  ReceiveMainContainer,
+  ReceiveInfoContainer,
+  ReceiveMapContainer,
+} from './Receive';
 
 export {
   MainContainer,
@@ -35,4 +39,5 @@ export {
   MessageSendContainer,
   ReceiveMainContainer,
   ReceiveInfoContainer,
+  ReceiveMapContainer,
 };
